@@ -1,0 +1,34 @@
+{
+  "name": "web-bundlers",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  },
+  "scripts": {
+    "build:all": "yarn build:webpack-js && yarn build:webpack-ts && yarn:build:parcel-js && yarn build:parcel-ts && yarn build:vite-js && yarn build:vite-ts && yarn build:next-js && yarn build:next-ts",
+    "build:webpack-ts": "yarn workspace webpack-ts build",
+    "start:webpack-ts": "yarn workspace webpack-ts start",
+    "build:webpack-js": "yarn workspace webpack-js build",
+    "start:webpack-js": "yarn workspace webpack-js start",
+    "build:vite-ts": "yarn workspace vite-ts build",
+    "start:vite-ts": "yarn workspace vite-ts start",
+    "build:vite-js": "yarn workspace vite-js build",
+    "start:vite-js": "yarn workspace vite-js start",
+    "build:parcel-js": "yarn workspace parcel-js build",
+    "start:parcel-js": "yarn workspace parcel-js start",
+    "build:parcel-ts": "yarn workspace parcel-ts build",
+    "start:parcel-ts": "yarn workspace parcel-ts start",
+    "build:next-ts": "yarn workspace next-ts build",
+    "start:next-ts": "yarn workspace next-ts start",
+    "build:next-js": "yarn workspace next-js build",
+    "start:next-js": "yarn workspace next-js start"
+  },
+  "dependencies": {
+    "warp-contracts": "1.2.0-bundles.11"
+  }
+}
