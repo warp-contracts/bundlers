@@ -1,0 +1,8 @@
+node_modules
+dist
+.DS_Store
+.secrets
+.idea
+.yalc
+.github
+yarn-error.log

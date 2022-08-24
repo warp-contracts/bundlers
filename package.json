@@ -29,6 +29,6 @@
     "start:next-js": "yarn workspace next-js start"
   },
   "dependencies": {
-    "warp-contracts": "1.2.0-bundles.11"
+    "warp-contracts": "1.2.0-bundles.13"
   }
 }
