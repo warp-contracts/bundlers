@@ -10,16 +10,16 @@ jobs:
           node-version: '18'
       - name: Install next-js
         run: yarn install
-        working-directory: nextjs/js
+        working-directory: next/js
       - name: Build next-js
         run: yarn build
-        working-directory: nextjs/js
+        working-directory: next/js
       - name: Install next-ts
         run: yarn install
-        working-directory: nextjs/ts
+        working-directory: next/ts
       - name: Build next-ts
         run: yarn build
-        working-directory: nextjs/ts
+        working-directory: next/ts
       - name: Install parcel-js
         run: yarn install
         working-directory: parcel/js
