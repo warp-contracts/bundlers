@@ -16,6 +16,6 @@
   "devDependencies": {
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
-    "warp-contracts": "1.2.0-bundles.13"
+    "warp-contracts": "1.2.0-bundles.15"
   }
 }

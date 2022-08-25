@@ -1,5 +1,5 @@
 import styles from '../styles/Home.module.css';
-import { WarpFactory } from 'warp-contracts/mjs';
+import { WarpFactory } from 'warp-contracts';
 import { useEffect, useState } from 'react';
 
 const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';

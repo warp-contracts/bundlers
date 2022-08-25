@@ -1,5 +1,15 @@
 import styles from '../styles/Home.module.css';
+import { WarpFactory } from 'warp-contracts';
+//const { WarpFactory } = require('warp-contracts');
+/*
+or:
+// @ts-ignore
 import { WarpFactory } from 'warp-contracts/mjs';
+
+but:
+import { WarpFactory } = from 'warp-contracts';
+- does not work, for some weird, next.js reasons.
+*/
 import { useEffect, useState } from 'react';
 
 const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
