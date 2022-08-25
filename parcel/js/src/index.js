@@ -1,4 +1,4 @@
-import { WarpFactory } from 'warp-contracts';
+const { WarpFactory } = require('warp-contracts');
 
 const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
 

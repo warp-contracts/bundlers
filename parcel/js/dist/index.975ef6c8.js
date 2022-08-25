@@ -532,12 +532,26 @@ function hmrAcceptRun(bundle, id) {
 }
 
 },{}],"8lqZg":[function(require,module,exports) {
-var _warpContracts = require("warp-contracts");
-const CONTRACT_ID = "1P-PuRf4r3eKPMRQmUrB-YA8nndcjGcF5RfPiEgiSUw";
-const warp = (0, _warpContracts.WarpFactory).forMainnet();
+const { WarpFactory  } = require("warp-contracts");
+const SOURCE_TX_ID = "9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU";
+const warp = WarpFactory.forMainnet();
 const deployWriteAndRead = async ()=>{
     const wallet = await loadWallet();
-    const contract = warp.contract(CONTRACT_ID).connect(wallet);
+    const walletAddress = await warp.arweave.wallets.getAddress(wallet);
+    console.log("wallet address", walletAddress);
+    const initialState = {
+        ticker: "WB",
+        name: "Web Bundlers PST",
+        owner: walletAddress,
+        balances: {}
+    };
+    const { contractTxId  } = await warp.createContract.deployFromSourceTx({
+        wallet,
+        initState: JSON.stringify(initialState),
+        srcTxId: SOURCE_TX_ID
+    });
+    console.log("contract id", contractTxId);
+    const contract = warp.contract(contractTxId).connect(wallet);
     const result = await contract.writeInteraction({
         function: "mint",
         qty: 100
@@ -15253,8 +15267,8 @@ exports.constants = {
 
 },{"randombytes":"8hjhE","create-hash":"2WyL8","create-hmac":"k1utz","browserify-sign/algos":"busIB","pbkdf2":"g38Hg","browserify-cipher":"d4idn","diffie-hellman":"hwD3y","browserify-sign":"jbRNy","create-ecdh":"9Rcg1","public-encrypt":"h9Rdh","randomfill":"k3tsT"}],"8hjhE":[function(require,module,exports) {
 "use strict";
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 // limit of Crypto.getRandomValues()
 // https://developer.mozilla.org/en-US/docs/Web/API/Crypto/getRandomValues
 var MAX_BYTES = 65536;
@@ -20372,8 +20386,8 @@ module.exports = function(iterations, keylen) {
 };
 
 },{}],"T9r9Q":[function(require,module,exports) {
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 var defaultEncoding;
 /* istanbul ignore next */ if (global.process && global.process.browser) defaultEncoding = "utf-8";
 else if (global.process && global.process.version) {
@@ -34156,8 +34170,8 @@ function compare(a, b) {
 
 },{"parse-asn1":"4Szbv","./mgf":"e2JgG","./xor":"iaxu0","bn.js":"VopIn","browserify-rsa":"e594P","create-hash":"2WyL8","./withPublic":"fFkPV","safe-buffer":"eW7r9"}],"k3tsT":[function(require,module,exports) {
 "use strict";
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 function oldBrowser() {
     throw new Error("secure random number generation not supported by this browser\nuse chrome, FireFox or Internet Explorer 11");
 }
@@ -48021,8 +48035,8 @@ exports.rustWasmImports = rustWasmImports;
 
 },{"../../../../logging/LoggerFactory":"4Dtu2"}],"gcYVS":[function(require,module,exports) {
 "use strict";
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 // Copyright 2018 The Go Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style
 // license that can be found in the LICENSE file.

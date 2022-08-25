@@ -1,0 +1,23 @@
+
+name: Auto update dependencies
+
+on: push
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+             
+      - name: Run auto dependency update 
+        uses: romoh/dependencies-autoupdate@main
+        with: 
+          token: ${{ secrets.GITHUB_TOKEN }}
+          update-command: "'yarn remove warp-contracts && yarn add warp-contracts'"
+          update-path: "'./next/js'"

@@ -4,7 +4,10 @@ import { useEffect, useState } from 'react';
 
 const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
 
-const warp = WarpFactory.forMainnet();
+const warp = WarpFactory.forMainnet({
+  ...defaultCacheOptions,
+  inMemory: true,
+});
 const deployWriteAndRead = async () => {
   const wallet = await loadWallet();
   const walletAddress = await warp.arweave.wallets.getAddress(wallet);
