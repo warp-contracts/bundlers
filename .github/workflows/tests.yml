@@ -8,21 +8,57 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '18'
+      - name: Install next-js
+        run: yarn install
+        working-directory: next/js
       - name: Build next-js
-        run: yarn install:next-js && yarn build:next-js
+        run: yarn build
+        working-directory: next/js
+      - name: Install next-ts
+        run: yarn install
+        working-directory: next/ts
       - name: Build next-ts
-        run: yarn install:next-ts && yarn build:next-ts
+        run: yarn build
+        working-directory: next/ts
+      - name: Install parcel-js
+        run: yarn install
+        working-directory: parcel/js
       - name: Build parcel-js
-        run: yarn install:parcel-js && yarn build:parcel-js
+        run: yarn build
+        working-directory: parcel/js
+      - name: Install parcel-ts
+        run: yarn install
+        working-directory: parcel/ts
       - name: Build parcel-ts
-        run: yarn install:parcel-ts && yarn build:parcel-ts
+        run: yarn build
+        working-directory: parcel/ts
+      - name: Install vite-js
+        run: yarn install
+        working-directory: vite/js
       - name: Build vite-js
-        run: yarn install:vite-js && yarn build:vite-js
+        run: yarn build
+        working-directory: vite/js
+      - name: Install vite-ts
+        run: yarn install
+        working-directory: vite/ts
       - name: Build vite-ts
-        run: yarn install:vite-ts && yarn build:vite-ts
+        run: yarn build
+        working-directory: vite/ts
+      - name: Install webpack-js
+        run: yarn install
+        working-directory: webpack/js
       - name: Build webpack-js
-        run: yarn install:webpack-js && yarn build:webpack-js
+        run: yarn build
+        working-directory: webpack/js
+      - name: Install webpack-ts
+        run: yarn install
+        working-directory: webpack/ts
       - name: Build webpack-ts
-        run: yarn install:webpack-ts && yarn build:webpack-ts
-      - name: Run node
-        run: yarn install:node && yarn run:node
+        run: yarn build
+        working-directory: webpack/ts
+      - name: Install node
+        run: yarn install
+        working-directory: node
+      - name: Build node
+        run: yarn build:ts && yarn run:js && yarn run:mjs && yarn run:ts && yarn run:ts-node
+        working-directory: node
