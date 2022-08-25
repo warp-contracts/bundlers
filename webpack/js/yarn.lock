@@ -540,7 +540,7 @@ arweave@1.11.4:
     bignumber.js "^9.0.2"
     util "^0.12.4"
 
-arweave@^1.10.13, arweave@^1.11.6:
+arweave@^1.10.13:
   version "1.11.6"
   resolved "https://registry.yarnpkg.com/arweave/-/arweave-1.11.6.tgz#5afcded201c6f123dd62e5bfae1b72ca793ec7c2"
   integrity sha512-D6N6e2z7oZoxFhu/qElLwQ2T8DxZ8xIqDB+Y16KHvZbassIrrS9iALwxLdaFYNInuyElg6i7qotBMcShWbFSTw==
@@ -3283,10 +3283,10 @@ vm2@3.9.9:
     acorn "^8.7.0"
     acorn-walk "^8.2.0"
 
-warp-contracts@1.2.0-bundles.14:
-  version "1.2.0-bundles.14"
-  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.2.0-bundles.14.tgz#738be044a88e747c498501939a4ef3179b4e84d2"
-  integrity sha512-8lfdGwpNs/DYk5gKb2kAZAKSOkrSVM9hLHKH4LazCFmv4g38dh8GRlYxBuZ7o2RJExqSI2dL78YyVfR6VrHSkA==
+warp-contracts@1.2.0-bundles.15:
+  version "1.2.0-bundles.15"
+  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.2.0-bundles.15.tgz#91c9327bb963728bf7ab9a4c37a780f9a09b2105"
+  integrity sha512-J8OZ1+IiXSgNC4JMitEpz2yv5wndb3Dyr4QtQ6QUyzJyoIPqaz09aNEffk92CgWQlMuW/CHd9rEN2055g2eoCg==
   dependencies:
     "@assemblyscript/loader" "^0.19.23"
     "@idena/vrf-js" "^1.0.1"

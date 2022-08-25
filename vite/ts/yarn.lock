@@ -23,6 +23,11 @@
     js-sha512 "^0.8.0"
     mocha "^8.1.2"
 
+"@types/node@^18.7.13":
+  version "18.7.13"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-18.7.13.tgz#23e6c5168333480d454243378b69e861ab5c011a"
+  integrity sha512-46yIhxSe5xEaJZXWdIBP7GU4HDTG8/eo0qd9atdiL+lFpA03y8KS+lkTN834TWJj5767GbWv4n/P6efyTFt1Dw==
+
 "@ungap/promise-all-settled@1.1.2":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@ungap/promise-all-settled/-/promise-all-settled-1.1.2.tgz#aa58042711d6e3275dd37dc597e5d31e8c290a44"
@@ -1762,10 +1767,10 @@ vm2@3.9.9:
     acorn "^8.7.0"
     acorn-walk "^8.2.0"
 
-warp-contracts@1.2.0-bundles.13:
-  version "1.2.0-bundles.13"
-  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.2.0-bundles.13.tgz#838546f8b4249f30e5240d7c88ee7555249f2a01"
-  integrity sha512-B5CgP5ortmqDg4/dXUWzgV/rfNeFAqFKyyla7k4ZPa5fA4Lz4E1JfktKTmckfdHoypaFHny4fJGYho5u4l5/Yw==
+warp-contracts@1.2.0-bundles.14:
+  version "1.2.0-bundles.14"
+  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.2.0-bundles.14.tgz#738be044a88e747c498501939a4ef3179b4e84d2"
+  integrity sha512-8lfdGwpNs/DYk5gKb2kAZAKSOkrSVM9hLHKH4LazCFmv4g38dh8GRlYxBuZ7o2RJExqSI2dL78YyVfR6VrHSkA==
   dependencies:
     "@assemblyscript/loader" "^0.19.23"
     "@idena/vrf-js" "^1.0.1"

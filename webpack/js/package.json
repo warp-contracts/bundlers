@@ -19,7 +19,6 @@
     "webpack-dev-server": "^4.10.0"
   },
   "dependencies": {
-    "arweave": "^1.11.6",
-    "warp-contracts": "1.2.0-bundles.14"
+    "warp-contracts": "1.2.0-bundles.15"
   }
 }
