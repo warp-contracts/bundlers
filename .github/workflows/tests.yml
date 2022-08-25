@@ -1,0 +1,28 @@
+name: CI
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - name: Build next-js
+        run: yarn install:next-js && yarn build:next-js
+      - name: Build next-ts
+        run: yarn install:next-ts && yarn build:next-ts
+      - name: Build parcel-js
+        run: yarn install:parcel-js && yarn build:parcel-js
+      - name: Build parcel-ts
+        run: yarn install:parcel-ts && yarn build:parcel-ts
+      - name: Build vite-js
+        run: yarn install:vite-js && yarn build:vite-js
+      - name: Build vite-ts
+        run: yarn install:vite-ts && yarn build:vite-ts
+      - name: Build webpack-js
+        run: yarn install:webpack-js && yarn build:webpack-js
+      - name: Build webpack-ts
+        run: yarn install:webpack-ts && yarn build:webpack-ts
+      - name: Run node
+        run: yarn install:node && yarn run:node

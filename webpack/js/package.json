@@ -1,0 +1,25 @@
+{
+  "name": "webpack-js",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start": "webpack serve --open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^4.10.0"
+  },
+  "dependencies": {
+    "arweave": "^1.11.6",
+    "warp-contracts": "1.2.0-bundles.14"
+  }
+}

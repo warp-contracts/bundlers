@@ -1,0 +1,19 @@
+{
+  "name": "vite-ts",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "^4.6.4",
+    "vite": "3.0.9"
+  },
+  "dependencies": {
+    "warp-contracts": "1.2.0-bundles.13",
+    "arweave": "1.11.4"
+  }
+}
