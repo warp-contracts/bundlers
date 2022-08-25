@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "build:ts": "tsc -b tsconfig.json",
+    "build": "tsc -b tsconfig.json",
     "run:js": "node src/js/index.js",
     "run:mjs": "node src/js/index.mjs",
     "run:ts": "node dist/cjs/index.js",
