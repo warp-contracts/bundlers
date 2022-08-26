@@ -7,6 +7,7 @@
     "install:next-js": "cd next/js && yarn install",
     "build:next-js": "cd next/js && yarn build",
     "start:next-js": "cd next/js && yarn dev",
+    "start:next-js:prod": "cd next/js && yarn start",
     "run:next-js": "yarn install:next-js && yarn build:next-js && yarn start:next-js",
     "install:next-ts": "cd next/ts && yarn install",
     "build:next-ts": "cd next/ts && yarn build",
@@ -62,5 +63,8 @@
     "build:unpkg-ts": "cd unpkg/ts && yarn build",
     "start:unpkg-ts": "cd unpkg/ts && yarn start",
     "run:unpkg-ts": "yarn install:unpkg-ts && yarn build:unpkg-ts && yarn start:unpkg-js"
+  },
+  "devDependencies": {
+    "cypress": "^10.6.0"
   }
 }
