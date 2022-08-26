@@ -105,6 +105,3 @@ jobs:
       - name: Build node
         run: yarn build && yarn run:js && yarn run:mjs && yarn run:ts && yarn run:ts-node
         working-directory: node
-      - name: Test next.js prod
-        run: bash cypress-next-js-prod.sh
-        working-directory: node
