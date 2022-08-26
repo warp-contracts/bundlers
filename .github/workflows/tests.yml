@@ -56,6 +56,18 @@ jobs:
       - name: Build webpack-ts
         run: yarn build
         working-directory: webpack/ts
+      - name: Install webpack4-js
+        run: yarn install
+        working-directory: webpack4/js
+      - name: Build webpack4-js
+        run: yarn build
+        working-directory: webpack4/js
+      - name: Install webpack4-ts
+        run: yarn install
+        working-directory: webpack4/ts
+      - name: Build webpack4-ts
+        run: yarn build
+        working-directory: webpack4/ts
       - name: Install node
         run: yarn install
         working-directory: node

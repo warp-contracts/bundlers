@@ -29,6 +29,14 @@
     "build:webpack-ts": "cd webpack/ts && yarn build",
     "start:webpack-ts": "cd webpack/ts && yarn start",
     "run:webpack-ts": "yarn install:webpack-ts && yarn build:webpack-ts && yarn start:webpack-ts",
+    "install:webpack4-js": "cd webpack4/js && yarn install",
+    "build:webpack4-js": "cd webpack4/js && yarn build",
+    "start:webpack4-js": "cd webpack4/js && yarn dev",
+    "run:webpack4-js": "yarn install:webpack4-js && yarn build:webpack4-js && yarn start:webpack4-js",
+    "install:webpack4-ts": "cd webpack4/ts && yarn install",
+    "build:webpack4-ts": "cd webpack4/ts && yarn build",
+    "start:webpack4-ts": "cd webpack4/ts && yarn dev",
+    "run:webpack4-ts": "yarn install:webpack4-ts && yarn build:webpack4-ts && yarn start:webpack4-ts",
     "install:vite-js": "cd vite/js && yarn install",
     "build:vite-js": "cd vite/js && yarn build",
     "start:vite-js": "cd vite/js && yarn dev",
@@ -36,6 +44,14 @@
     "install:vite-ts": "cd vite/ts && yarn install",
     "build:vite-ts": "cd vite/ts && yarn build",
     "start:vite-ts": "cd vite/ts && yarn dev",
-    "run:vite-ts": "yarn install:vite-ts && yarn build:vite-ts && yarn start:vite-ts"
+    "run:vite-ts": "yarn install:vite-ts && yarn build:vite-ts && yarn start:vite-ts",
+    "install:rollup-js": "cd rollup/js && yarn install",
+    "build:rollup-js": "cd rollup/js && yarn build",
+    "start:rollup-js": "cd rollup/js && yarn dev",
+    "run:rollup-js": "yarn install:rollup-js && yarn build:rollup-js && yarn start:rollup-js",
+    "install:rollup-ts": "cd rollup/ts && yarn install",
+    "build:rollup-ts": "cd rollup/ts && yarn build",
+    "start:rollup-ts": "cd rollup/ts && yarn dev",
+    "run:rollup-ts": "yarn install:rollup-ts && yarn build:rollup-ts && yarn start:rollup-ts"
   }
 }
