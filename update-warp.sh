@@ -4,7 +4,7 @@ version="1.2.0-bundles.16"
 
 set -e
 
-DIRS=(next node parcel rollup vite webpack4 webpack5 "$@")
+DIRS=(next node parcel rollup unpkg vite webpack4 webpack5 "$@")
 for i in "${!DIRS[@]}";
 do
   DIRS[i]="$PWD/${DIRS[i]}"
