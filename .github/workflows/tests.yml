@@ -72,5 +72,5 @@ jobs:
         run: yarn install
         working-directory: node
       - name: Build node
-        run: yarn build:ts && yarn run:js && yarn run:mjs && yarn run:ts && yarn run:ts-node
+        run: yarn build && yarn run:js && yarn run:mjs && yarn run:ts && yarn run:ts-node
         working-directory: node
