@@ -15,6 +15,6 @@
     "stream-browserify": "^3.0.0"
   },
   "dependencies": {
-    "warp-contracts": "1.2.0-bundles.15"
+    "warp-contracts": "1.2.0-bundles.16"
   }
 }

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="1.2.0-bundles.15"
+version="1.2.0-bundles.16"
 
 set -e
 
@@ -16,9 +16,7 @@ while IFS='' read -r line; do
    && tmp=$(mktemp) \
    && jq --arg version "$version" '.dependencies."warp-contracts"=$version' package.json > "$tmp" \
    && mv "$tmp" package.json \
-   && yarn \
-   && git commit -a -m "skynet: warp-contracts lib update" \
-   && git push origin HEAD
+   && yarn
   )
 done < <(
   find "${DIRS[@]}" -iname 'package.json' ! -path '*/node_modules/*' ! -path '*/.next/*' -exec dirname {} \;
