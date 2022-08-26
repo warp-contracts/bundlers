@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="1.2.0-bundles.16"
+version="1.2.0-bundles.15"
 
 set -e
 
@@ -22,4 +22,4 @@ done < <(
   find "${DIRS[@]}" -iname 'package.json' ! -path '*/node_modules/*' ! -path '*/.next/*' -exec dirname {} \;
 )
 
-git commit -a -m "skynet: warp-contracts lib update to &version" && git push origin HEAD
+git commit -a -m "skynet: warp-contracts lib update to $version" && git push origin HEAD
