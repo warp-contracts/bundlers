@@ -21,10 +21,10 @@
     "build:parcel-ts": "cd parcel/ts && yarn build",
     "start:parcel-ts": "cd parcel/ts && yarn start",
     "run:parcel-ts": "yarn install:parcel-ts && yarn build:parcel-ts && yarn start:parcel-ts",
-    "install:webpack-js": "cd webpack5/js && yarn install",
-    "build:webpack-js": "cd webpack5/js && yarn build",
-    "start:webpack-js": "cd webpack5/js && yarn start",
-    "run:webpack-js": "yarn install:webpack-js && yarn build:webpack-js && yarn start:webpack-js",
+    "install:webpack5-js": "cd webpack5/js && yarn install",
+    "build:webpack5-js": "cd webpack5/js && yarn build",
+    "start:webpack5-js": "cd webpack5/js && yarn start",
+    "run:webpack5-js": "yarn install:webpack5-js && yarn build:webpack5-js && yarn start:webpack5-js",
     "install:webpack-ts": "cd webpack5/js && yarn install",
     "build:webpack-ts": "cd webpack5/ts && yarn build",
     "start:webpack-ts": "cd webpack5/ts && yarn start",
@@ -52,6 +52,14 @@
     "install:rollup-ts": "cd rollup/ts && yarn install",
     "build:rollup-ts": "cd rollup/ts && yarn build",
     "start:rollup-ts": "cd rollup/ts && yarn dev",
-    "run:rollup-ts": "yarn install:rollup-ts && yarn build:rollup-ts && yarn start:rollup-ts"
+    "run:rollup-ts": "yarn install:rollup-ts && yarn build:rollup-ts && yarn start:rollup-ts",
+    "install:unpkg-js": "cd unpkg/js && yarn install",
+    "build:unpkg-js": "cd unpkg/js && yarn build",
+    "start:unpkg-js": "cd unpkg/js && yarn start",
+    "run:unpkg-js": "yarn install:unpkg-js && yarn build:unpkg-js && yarn start:unpkg-js",
+    "install:unpkg-ts": "cd unpkg/ts && yarn install",
+    "build:unpkg-ts": "cd unpkg/ts && yarn build",
+    "start:unpkg-ts": "cd unpkg/ts && yarn start",
+    "run:unpkg-ts": "yarn install:unpkg-ts && yarn build:unpkg-ts && yarn start:unpkg-js"
   }
 }

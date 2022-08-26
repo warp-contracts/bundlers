@@ -44,16 +44,16 @@ jobs:
       - name: Build vite-ts
         run: yarn build
         working-directory: vite/ts
-      - name: Install webpack-js
+      - name: Install webpack5-js
         run: yarn install
-        working-directory: webpack/js
-      - name: Build webpack-js
+        working-directory: webpack5/js
+      - name: Build webpack5-js
         run: yarn build
-        working-directory: webpack/js
-      - name: Install webpack-ts
+        working-directory: webpack5/js
+      - name: Install webpack5-ts
         run: yarn install
-        working-directory: webpack/ts
-      - name: Build webpack-ts
+        working-directory: webpack5/ts
+      - name: Build webpack5-ts
         run: yarn build
         working-directory: webpack/ts
       - name: Install webpack4-js
@@ -68,6 +68,18 @@ jobs:
       - name: Build webpack4-ts
         run: yarn build
         working-directory: webpack4/ts
+      - name: Install unpkg-js
+        run: yarn install
+        working-directory: unpkg/js
+      - name: Build unpkg-js
+        run: yarn build
+        working-directory: unpkg/js
+      - name: Install unpkg-ts
+        run: yarn install
+        working-directory: unpkg/ts
+      - name: Build unpkg-ts
+        run: yarn build
+        working-directory: unpkg/ts
       - name: Install node
         run: yarn install
         working-directory: node
