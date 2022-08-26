@@ -18,6 +18,6 @@
     "start": "concurrently --kill-others --names tsc,web-dev-server \"web-dev-server --config web-dev-server.config.js\""
   },
   "dependencies": {
-    "warp-contracts": "1.2.0-bundles.17"
+    "warp-contracts": "1.2.0-bundles.18"
   }
 }
