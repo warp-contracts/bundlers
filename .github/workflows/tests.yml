@@ -55,7 +55,7 @@ jobs:
         working-directory: webpack5/ts
       - name: Build webpack5-ts
         run: yarn build
-        working-directory: webpack/ts
+        working-directory: webpack5/ts
       - name: Install webpack4-js
         run: yarn install
         working-directory: webpack4/js
