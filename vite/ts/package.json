@@ -14,6 +14,6 @@
     "vite": "3.0.9"
   },
   "dependencies": {
-    "warp-contracts": "1.2.0-bundles.15"
+    "warp-contracts": "1.2.0-bundles.16"
   }
 }
