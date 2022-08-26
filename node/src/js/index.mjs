@@ -8,6 +8,7 @@ const deployWriteAndRead = async () => {
   const wallet = await loadWallet();
   const walletAddress = await warp.arweave.wallets.getAddress(wallet);
   console.log('wallet address', walletAddress);
+
   const initialState = {
     ticker: 'WB',
     name: 'Web Bundlers PST',
@@ -21,9 +22,11 @@ const deployWriteAndRead = async () => {
     srcTxId: SOURCE_TX_ID,
   });
   console.log('contract id', contractTxId);
+
   const contract = warp.contract(contractTxId).connect(wallet);
   const result = await contract.writeInteraction({ function: 'mint', qty: 100 });
   console.log(result?.originalTxId);
+
   const { cachedValue } = await contract.readState();
   return cachedValue.state;
 };
