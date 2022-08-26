@@ -23,3 +23,5 @@ while IFS='' read -r line; do
 done < <(
   find "${DIRS[@]}" -iname 'package.json' ! -path '*/node_modules/*' ! -path '*/.next/*' -exec dirname {} \;
 )
+
+git commit -a -m "skynet: warp-contracts lib update to &version" && git push origin HEAD
