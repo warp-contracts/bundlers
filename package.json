@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
+    "update:warp": "bash update-warp.sh",
     "install:next-js": "cd next/js && yarn install",
     "build:next-js": "cd next/js && yarn build",
     "start:next-js": "cd next/js && yarn dev",

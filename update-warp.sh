@@ -15,7 +15,11 @@ while IFS='' read -r line; do
   (cd "$line" \
    && tmp=$(mktemp) \
    && jq --arg version "$version" '.dependencies."warp-contracts"=$version' package.json > "$tmp" \
-   && mv "$tmp" package.json)
+   && mv "$tmp" package.json \
+   && yarn \
+   && git commit -a -m "skynet: warp-contracts lib update" \
+   && git push origin HEAD
+  )
 done < <(
   find "${DIRS[@]}" -iname 'package.json' ! -path '*/node_modules/*' ! -path '*/.next/*' -exec dirname {} \;
 )
