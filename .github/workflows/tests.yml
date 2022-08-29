@@ -21,7 +21,7 @@ jobs:
           wait-on-timeout: 120
           browser: chrome
           group: 'UI - Chrome'
-          spec: ../../../cypress/e2e/next/js/*
+          spec: ../../cypress/e2e/next/js/*
           working-directory: next/js
   # build:
   #   runs-on: ubuntu-latest
