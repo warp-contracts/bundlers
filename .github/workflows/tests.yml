@@ -30,7 +30,7 @@ jobs:
           # we have already installed all dependencies above
           install: true
           build: npm run build
-          start: npm run start
+          start: npm run dev -p 3000
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: chrome
@@ -50,7 +50,7 @@ jobs:
           # we have already installed all dependencies above
           install: true
           build: npm run build
-          start: npm run start
+          start: npm run start -p 30001
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: chrome
