@@ -34,7 +34,7 @@ jobs:
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/next/next_js_dev.cy.js
+          spec: ../../cypress/e2e/next_js_dev.cy.js
           config-file: ../../cypress.config.js
           working-directory: next/js
           record: true
@@ -54,7 +54,7 @@ jobs:
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/next/next_js_prod.cy.js
+          spec: ../../cypress/e2e/next_js_prod.cy.js
           config-file: ../../cypress.config.js
           working-directory: next/js
           record: true
