@@ -1,5 +1,5 @@
 describe('The Next JS Prod', () => {
   it('successfully loads', () => {
-    cy.visit('http://localhost:3000')
+    cy.visit('http://localhost:3001')
   });
 });

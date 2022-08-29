@@ -1,10 +1,10 @@
 import styles from '../styles/Home.module.css';
-import {defaultCacheOptions, WarpFactory} from 'warp-contracts';
+import { defaultCacheOptions, WarpFactory } from 'warp-contracts';
 import { useEffect, useState } from 'react';
 
 const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
 
-const warp = WarpFactory.forMainnet({...defaultCacheOptions, inMemory: true});
+const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true });
 
 const deployWriteAndRead = async () => {
   const wallet = await loadWallet();
