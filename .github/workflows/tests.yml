@@ -15,7 +15,7 @@ jobs:
         with:
           # we have already installed all dependencies above
           install: true
-          build: npm run start
+          build: npm run build
           start: npm run dev
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
