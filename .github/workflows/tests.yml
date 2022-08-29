@@ -25,7 +25,6 @@ jobs:
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: chrome
-          group: 'UI - Chrome'
           spec: ../../cypress/e2e/next/js/*
           config-file: ../../cypress.config.js
           working-directory: next/js
