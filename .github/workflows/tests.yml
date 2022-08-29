@@ -1,25 +1,20 @@
 name: CI
 on: push
 jobs:
-#  cypress-run:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v2
-#      # Install NPM dependencies, cache them correctly
-#      # and run all Cypress tests
-#      - name: Cypress info
-#        run: npx cypress info
-#      - name: Cypress run
-#        uses: cypress-io/github-action@v4
-#        with:
-#          install: true
-#          browser: chrome
-#          project: ./next/js
-#          build: yarn build
-#          start: yarn start
-#          working-directory: cypress
-#          wait-on: 'http://localhost:3000'
+  cypress-run:
+    runs-on: ubuntu-latest
+    # let's make sure our tests pass on Chrome browser
+    name: E2E on Chrome
+    steps:
+      - uses: actions/checkout@v2
+      - uses: cypress-io/github-action@v4
+        with:
+          browser: chrome
+          project: next/js
+          build: yarn build
+          start: yarn dev
+          wait-on: 'http://localhost:3000'
+          spec: cypress/e2e/next_js_prod.cy.js
   build:
     runs-on: ubuntu-latest
     steps:
