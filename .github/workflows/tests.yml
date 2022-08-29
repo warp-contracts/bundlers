@@ -28,7 +28,7 @@ jobs:
           spec: ../../cypress/e2e/next_js_dev.cy.js
           config-file: ../../cypress.config.js
           working-directory: next/js
-  cypress-run:
+  cypress-run2:
   runs-on: ubuntu-latest
     # let's make sure our tests pass on Chrome browser
   name: E2E on Chrome
