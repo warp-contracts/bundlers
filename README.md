@@ -2,7 +2,7 @@ Warp bundlers repository aims to provide sample projects using Warp SDK within d
 
 If you encounter any issues while using Warp SDK in a specific bundler (due to upgraded version etc.), please create an issue in the repository.
 
-You can find helper scripts in the root `package.json` file, you can use either `yarn` or `npm`.
+You can find helper scripts in the root `package.json` file, you can use either `yarn` or `npm`. For each of the project we are testing deploying the contract, writing interaction and reading the state.
 
 ## Web bundlers scripts
 
@@ -61,7 +61,7 @@ Refer to [this directory](https://github.com/warp-contracts/bundlers/tree/main/n
 ```js
 import { defaultCacheOptions, WarpFactory } from 'warp-contracts';
 
-const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true });
+const warp = WarpFactory.forMainnet();
 ```
 
 **Additional configuration:**
@@ -83,7 +83,7 @@ Refer to [this directory](https://github.com/warp-contracts/bundlers/tree/main/p
 ```js
 import { defaultCacheOptions, WarpFactory } from 'warp-contracts';
 
-const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true });
+const warp = WarpFactory.forMainnet();
 ```
 
 **Additional configuration:**
@@ -99,7 +99,7 @@ Refer to [this directory](https://github.com/warp-contracts/bundlers/tree/main/r
 ```js
 import { defaultCacheOptions, WarpFactory } from 'warp-contracts';
 
-const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true });
+const warp = WarpFactory.forMainnet();
 ```
 
 **Additional configuration:**
@@ -120,7 +120,7 @@ Insert `script` tag in your `index.html` file:
 ```
 
 ```js
-const sdk = warp.WarpFactory.forMainnet({ ...warp.defaultCacheOptions, inMemory: true });
+const sdk = warp.WarpFactory.forMainnet();
 ```
 
 **Additional configuration:**
@@ -148,7 +148,7 @@ Refer to [this directory](https://github.com/warp-contracts/bundlers/tree/main/v
 ```js
 import { defaultCacheOptions, WarpFactory } from 'warp-contracts/web';
 
-const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true });
+const warp = WarpFactory.forMainnet();
 ```
 
 **Additional configuration:**
@@ -164,7 +164,7 @@ Refer to [this directory](https://github.com/warp-contracts/bundlers/tree/main/w
 ```js
 import { WarpFactory, defaultCacheOptions } from 'warp-contracts';
 
-const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true });
+const warp = WarpFactory.forMainnet();
 ```
 
 **Additional configuration:**
@@ -180,7 +180,7 @@ Refer to [this directory](https://github.com/warp-contracts/bundlers/tree/main/w
 ```js
 import { WarpFactory, defaultCacheOptions } from 'warp-contracts/web';
 
-const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true });
+const warp = WarpFactory.forMainnet();
 ```
 
 **Additional configuration:**
@@ -188,4 +188,9 @@ const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true });
 
 ### Node
 
-For server side we are testing `CommonJS` and `ECMAScript` versions as well as `.ts` and `.mjs` files for both execution machines - `node` and `ts-node`.
+For server side we are testing 
+- `CommonJS` version in a `.js` file
+- `ECMAScript` version in a `.mjs` file 
+- `Typescript`
+  - in a `.js` file compiled with `tsc` command
+  - directly in a `.ts` file executed with `ts-node` exection machine
