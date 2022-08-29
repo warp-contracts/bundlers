@@ -28,6 +28,20 @@ jobs:
           spec: ../../cypress/e2e/next_js_dev.cy.js
           config-file: ../../cypress.config.js
           working-directory: next/js
+    cypress-run:
+    runs-on: ubuntu-latest
+    # let's make sure our tests pass on Chrome browser
+    name: E2E on Chrome
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        uses: cypress-io/github-action@v4
+        with:
+          # just perform install
+          runTests: false
       - name: 'UI Tests - Chrome'
         uses: cypress-io/github-action@v4
         with:
@@ -38,87 +52,100 @@ jobs:
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/next_js_prod.cy.js
+          spec: ../../cypress/e2e/next_js_dev.cy.js
           config-file: ../../cypress.config.js
           working-directory: next/js
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          # we have already installed all dependencies above
-          install: true
-          build: yarn build
-          start: yarn dev -p 3002
-          wait-on: 'http://localhost:3002'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/next_ts_dev.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: next/ts
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          # we have already installed all dependencies above
-          install: true
-          build: yarn build
-          start: yarn dev -p 3003
-          wait-on: 'http://localhost:3003'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/next_ts_prod.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: next/ts
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          # we have already installed all dependencies above
-          install: true
-          build: yarn build
-          start: yarn start -p 3004
-          wait-on: 'http://localhost:3004'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/parcel_js_dev.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: parcel/js
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          # we have already installed all dependencies above
-          install: true
-          build: yarn build
-          start: yarn start -p 3005
-          wait-on: 'http://localhost:3005'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/parcel_ts_prod.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: parcel/ts
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          # we have already installed all dependencies above
-          install: true
-          build: yarn build
-          start: yarn start -p 3006
-          wait-on: 'http://localhost:3006'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/rollup_js_dev.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: rollup/js
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          # we have already installed all dependencies above
-          install: true
-          build: yarn build
-          start: yarn start -p 3007
-          wait-on: 'http://localhost:3007'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/rollup_ts_dev.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: rollup/ts
+      # - name: 'UI Tests - Chrome'
+      #   uses: cypress-io/github-action@v4
+      #   with:
+      #     # we have already installed all dependencies above
+      #     install: true
+      #     build: yarn build
+      #     start: yarn start -p 3000
+      #     wait-on: 'http://localhost:3000'
+      #     wait-on-timeout: 120
+      #     browser: chrome
+      #     spec: ../../cypress/e2e/next_js_prod.cy.js
+      #     config-file: ../../cypress.config.js
+      #     working-directory: next/js
+      # - name: 'UI Tests - Chrome'
+      #   uses: cypress-io/github-action@v4
+      #   with:
+      #     # we have already installed all dependencies above
+      #     install: true
+      #     build: yarn build
+      #     start: yarn dev -p 3002
+      #     wait-on: 'http://localhost:3002'
+      #     wait-on-timeout: 120
+      #     browser: chrome
+      #     spec: ../../cypress/e2e/next_ts_dev.cy.js
+      #     config-file: ../../cypress.config.js
+      #     working-directory: next/ts
+      # - name: 'UI Tests - Chrome'
+      #   uses: cypress-io/github-action@v4
+      #   with:
+      #     # we have already installed all dependencies above
+      #     install: true
+      #     build: yarn build
+      #     start: yarn dev -p 3003
+      #     wait-on: 'http://localhost:3003'
+      #     wait-on-timeout: 120
+      #     browser: chrome
+      #     spec: ../../cypress/e2e/next_ts_prod.cy.js
+      #     config-file: ../../cypress.config.js
+      #     working-directory: next/ts
+      # - name: 'UI Tests - Chrome'
+      #   uses: cypress-io/github-action@v4
+      #   with:
+      #     # we have already installed all dependencies above
+      #     install: true
+      #     build: yarn build
+      #     start: yarn start -p 3004
+      #     wait-on: 'http://localhost:3004'
+      #     wait-on-timeout: 120
+      #     browser: chrome
+      #     spec: ../../cypress/e2e/parcel_js_dev.cy.js
+      #     config-file: ../../cypress.config.js
+      #     working-directory: parcel/js
+      # - name: 'UI Tests - Chrome'
+      #   uses: cypress-io/github-action@v4
+      #   with:
+      #     # we have already installed all dependencies above
+      #     install: true
+      #     build: yarn build
+      #     start: yarn start -p 3005
+      #     wait-on: 'http://localhost:3005'
+      #     wait-on-timeout: 120
+      #     browser: chrome
+      #     spec: ../../cypress/e2e/parcel_ts_prod.cy.js
+      #     config-file: ../../cypress.config.js
+      #     working-directory: parcel/ts
+      # - name: 'UI Tests - Chrome'
+      #   uses: cypress-io/github-action@v4
+      #   with:
+      #     # we have already installed all dependencies above
+      #     install: true
+      #     build: yarn build
+      #     start: yarn start -p 3006
+      #     wait-on: 'http://localhost:3006'
+      #     wait-on-timeout: 120
+      #     browser: chrome
+      #     spec: ../../cypress/e2e/rollup_js_dev.cy.js
+      #     config-file: ../../cypress.config.js
+      #     working-directory: rollup/js
+      # - name: 'UI Tests - Chrome'
+      #   uses: cypress-io/github-action@v4
+      #   with:
+      #     # we have already installed all dependencies above
+      #     install: true
+      #     build: yarn build
+      #     start: yarn start -p 3007
+      #     wait-on: 'http://localhost:3007'
+      #     wait-on-timeout: 120
+      #     browser: chrome
+      #     spec: ../../cypress/e2e/rollup_ts_dev.cy.js
+      #     config-file: ../../cypress.config.js
+      #     working-directory: rollup/ts
   # build:
   #   runs-on: ubuntu-latest
   #   steps:
