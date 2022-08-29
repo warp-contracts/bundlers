@@ -10,11 +10,16 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
+      - name: Install dependencies
+        uses: cypress-io/github-action@v4
+        with:
+          # just perform install
+          runTests: false
       - name: 'UI Tests - Chrome'
         uses: cypress-io/github-action@v4
         with:
           # we have already installed all dependencies above
-          install: true
+          install: false
           build: npm run build
           start: npm run dev
           wait-on: 'http://localhost:3000'
