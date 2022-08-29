@@ -3,6 +3,7 @@ on: push
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
+    container: cypress/browsers:node12.18.3-chrome87-ff82
     # let's make sure our tests pass on Chrome browser
     name: E2E on Chrome
     strategy:
@@ -29,8 +30,8 @@ jobs:
         with:
           # we have already installed all dependencies above
           install: true
-          build: npm run build
-          start: npm run dev -p 3000
+          build: yarn build
+          start: yarn dev -p 3000
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: chrome
@@ -49,9 +50,9 @@ jobs:
         with:
           # we have already installed all dependencies above
           install: true
-          build: npm run build
-          start: npm run start -p 30001
-          wait-on: 'http://localhost:3000'
+          build: yarn build
+          start: yarn dev -p 3001
+          wait-on: 'http://localhost:3001'
           wait-on-timeout: 120
           browser: chrome
           spec: ../../cypress/e2e/next_js_prod.cy.js
