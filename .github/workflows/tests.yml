@@ -23,7 +23,7 @@ jobs:
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/test.cy.js
+          spec: ../../cypress/e2e/next.cy.js
           config-file: ../../cypress.config.js
           working-directory: next/js
   cypress-run-next-js-prod:
@@ -48,7 +48,7 @@ jobs:
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/test.cy.js
+          spec: ../../cypress/e2e/next.cy.js
           config-file: ../../cypress.config.js
           working-directory: next/js
   cypress-run-next-ts-dev:
@@ -73,7 +73,7 @@ jobs:
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/test.cy.js
+          spec: ../../cypress/e2e/next.cy.js
           config-file: ../../cypress.config.js
           working-directory: next/ts
   cypress-run-next-ts-prod:
@@ -98,12 +98,11 @@ jobs:
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/test.cy.js
+          spec: ../../cypress/e2e/next.cy.js
           config-file: ../../cypress.config.js
           working-directory: next/ts
   cypress-run-parcel-js-dev:
     runs-on: ubuntu-latest
-    needs: cypress-run-next-ts-prod
     name: E2E on Chrome
     steps:
       - uses: actions/checkout@v2
@@ -120,10 +119,10 @@ jobs:
           install: true
           build: yarn build
           start: yarn start
-          wait-on: 'http://localhost:3000'
+          wait-on: 'http://localhost:1234'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/test.cy.js
+          spec: ../../cypress/e2e/parcel.cy.js
           config-file: ../../cypress.config.js
           working-directory: parcel/js
   cypress-run-parcel-ts-dev:
@@ -145,15 +144,14 @@ jobs:
           install: true
           build: yarn build
           start: yarn start
-          wait-on: 'http://localhost:3000'
+          wait-on: 'http://localhost:1234'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/test.cy.js
+          spec: ../../cypress/e2e/parcel.cy.js
           config-file: ../../cypress.config.js
           working-directory: parcel/ts
   cypress-run-rollup-js-dev:
     runs-on: ubuntu-latest
-    needs: cypress-run-parcel-ts-dev
     name: E2E on Chrome
     steps:
       - uses: actions/checkout@v2
@@ -170,10 +168,10 @@ jobs:
           install: true
           build: yarn build
           start: yarn start
-          wait-on: 'http://localhost:3000'
+          wait-on: 'http://localhost:8000'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/test.cy.js
+          spec: ../../cypress/e2e/rollup.cy.js
           config-file: ../../cypress.config.js
           working-directory: rollup/js
   cypress-run-rollup-ts-dev:
@@ -195,15 +193,14 @@ jobs:
           install: true
           build: yarn build
           start: yarn start
-          wait-on: 'http://localhost:3000'
+          wait-on: 'http://localhost:8000'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/test.cy.js
+          spec: ../../cypress/e2e/rollup.cy.js
           config-file: ../../cypress.config.js
           working-directory: rollup/ts
   cypress-run-vite-js-dev:
     runs-on: ubuntu-latest
-    needs: cypress-run-rollup-ts-dev
     name: E2E on Chrome
     steps:
       - uses: actions/checkout@v2
@@ -219,11 +216,11 @@ jobs:
         with:
           install: true
           build: yarn build
-          start: yarn start
-          wait-on: 'http://localhost:3000'
+          start: yarn dev
+          wait-on: 'http://127.0.0.1:5173'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/test.cy.js
+          spec: ../../cypress/e2e/vite.cy.js
           config-file: ../../cypress.config.js
           working-directory: vite/js
   cypress-run-vite-js-prod:
@@ -245,10 +242,10 @@ jobs:
           install: true
           build: yarn build
           start: yarn preview
-          wait-on: 'http://localhost:3000'
+          wait-on: 'http://127.0.0.1:5173'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/test.cy.js
+          spec: ../../cypress/e2e/vite.cy.js
           config-file: ../../cypress.config.js
           working-directory: vite/js
   cypress-run-vite-ts-dev:
@@ -269,11 +266,11 @@ jobs:
         with:
           install: true
           build: yarn build
-          start: yarn start
-          wait-on: 'http://localhost:3000'
+          start: yarn dev
+          wait-on: 'http://127.0.0.1:5173'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/test.cy.js
+          spec: ../../cypress/e2e/vite.cy.js
           config-file: ../../cypress.config.js
           working-directory: vite/ts
   cypress-run-vite-ts-prod:
@@ -295,10 +292,10 @@ jobs:
           install: true
           build: yarn build
           start: yarn preview
-          wait-on: 'http://localhost:3000'
+          wait-on: 'http://127.0.0.1:5173'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/test.cy.js
+          spec: ../../cypress/e2e/vite.cy.js
           config-file: ../../cypress.config.js
           working-directory: vite/ts
   cypress-run-webpack4-js-dev:
@@ -320,10 +317,10 @@ jobs:
           install: true
           build: yarn build
           start: yarn start
-          wait-on: 'http://localhost:3000'
+          wait-on: 'http://localhost:8000'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/test.cy.js
+          spec: ../../cypress/e2e/webpack4.cy.js
           config-file: ../../cypress.config.js
           working-directory: webpack4/js
   cypress-run-webpack4-ts-dev:
@@ -345,15 +342,14 @@ jobs:
           install: true
           build: yarn build
           start: yarn start
-          wait-on: 'http://localhost:3000'
+          wait-on: 'http://localhost:8000'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/test.cy.js
+          spec: ../../cypress/e2e/webpack4.cy.js
           config-file: ../../cypress.config.js
           working-directory: webpack4/ts
   cypress-run-webpack5-js-dev:
     runs-on: ubuntu-latest
-    needs: cypress-run-webpack4-ts-dev
     name: E2E on Chrome
     steps:
       - uses: actions/checkout@v2
@@ -370,10 +366,10 @@ jobs:
           install: true
           build: yarn build
           start: yarn start
-          wait-on: 'http://localhost:3000'
+          wait-on: 'http://localhost:8001'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/test.cy.js
+          spec: ../../cypress/e2e/webpack5.cy.js
           config-file: ../../cypress.config.js
           working-directory: webpack5/js
   cypress-run-webpack5-ts-dev:
@@ -395,10 +391,10 @@ jobs:
           install: true
           build: yarn build
           start: yarn start
-          wait-on: 'http://localhost:3000'
+          wait-on: 'http://localhost:8001'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/test.cy.js
+          spec: ../../cypress/e2e/webpack5.cy.js
           config-file: ../../cypress.config.js
           working-directory: webpack5/ts
       # - name: 'UI Tests - Chrome'
