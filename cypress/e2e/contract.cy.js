@@ -1,6 +1,5 @@
-describe('The Next JS Prod', () => {
+describe('Web bundlers contract test', () => {
   it('successfully loads', () => {
     cy.visit('/');
-    cy.contains('Web Bundlers PST');
   });
 });
