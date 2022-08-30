@@ -454,19 +454,7 @@ array.prototype.reduce@^1.0.4:
     es-array-method-boxes-properly "^1.0.0"
     is-string "^1.0.7"
 
-arweave@1.11.4:
-  version "1.11.4"
-  resolved "https://registry.yarnpkg.com/arweave/-/arweave-1.11.4.tgz#19e5850d3b9f655cacb0953b36a12ac6596b195c"
-  integrity sha512-EPUms1OMet/VFmYMefgxIpj17PIlIZzIteiHAn0tetN+d/LRV6N9CCsrg/t22hL6yLGdGRHrYlDEdsWqjwSSYg==
-  dependencies:
-    arconnect "^0.4.2"
-    asn1.js "^5.4.1"
-    axios "^0.27.2"
-    base64-js "^1.5.1"
-    bignumber.js "^9.0.2"
-    util "^0.12.4"
-
-arweave@^1.10.13:
+arweave@1.11.6, arweave@^1.10.13:
   version "1.11.6"
   resolved "https://registry.yarnpkg.com/arweave/-/arweave-1.11.6.tgz#5afcded201c6f123dd62e5bfae1b72ca793ec7c2"
   integrity sha512-D6N6e2z7oZoxFhu/qElLwQ2T8DxZ8xIqDB+Y16KHvZbassIrrS9iALwxLdaFYNInuyElg6i7qotBMcShWbFSTw==
@@ -5085,15 +5073,15 @@ vm2@3.9.9:
     acorn "^8.7.0"
     acorn-walk "^8.2.0"
 
-warp-contracts@1.2.0-bundles.19:
-  version "1.2.0-bundles.19"
-  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.2.0-bundles.19.tgz#a09b7b7ba10e061642b22b834af4e0e9577b487d"
-  integrity sha512-1NXqTCewcTlgkKF0O1OLnyp4OTyYIxoay+xi5CuPF00MmyNqA8uXPqBjER01OsfSRs32BUbK4H9c1gJ1F836zQ==
+warp-contracts@1.2.0-rc.2:
+  version "1.2.0-rc.2"
+  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.2.0-rc.2.tgz#af99ac783cf6ab7a409677f59801db04a4263078"
+  integrity sha512-qHhDj9bGr/DPtuad7fn5bYqFYc4T/GnbnojN6HCkqCClYIfE2QxpWz5pxS6Esy1U0XvR2Ym/Cbk/WmrRc9LP9g==
   dependencies:
     "@assemblyscript/loader" "^0.19.23"
     "@idena/vrf-js" "^1.0.1"
     archiver "^5.3.0"
-    arweave "1.11.4"
+    arweave "1.11.6"
     bignumber.js "^9.0.1"
     elliptic "^6.5.4"
     events "3.3.0"
