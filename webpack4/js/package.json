@@ -6,11 +6,13 @@
   "scripts": {
     "build": "webpack --config=webpack.config.prod.js",
     "build-dev": "webpack --config=webpack.config.dev.js",
-    "start": "webpack-dev-server --config=webpack.config.dev.js --open"
+    "start": "webpack-dev-server --config=webpack.config.dev.js --open",
+    "preview": "http-server ./dist --port 8090"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "html-webpack-plugin": "^3.2.0",
+    "http-server": "^14.1.1",
     "webpack": "^4.39.1",
     "webpack-cli": "^3.3.6",
     "webpack-dev-server": "^3.7.2"
