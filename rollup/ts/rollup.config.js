@@ -8,7 +8,8 @@ const baseConfig = createSpaConfig({
 });
 
 export default merge(baseConfig, {
-  // any <script type="module"> inside will be bundled by Rollup
-  input: './index.html',
-  plugins: [nodeResolve()],
+  input: './out-tsc/src/main.js',
+  output: {
+      dir: 'dist',
+  }
 });

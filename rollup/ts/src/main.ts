@@ -34,5 +34,5 @@ const loadWallet = async () => {
 deployWriteAndRead().then((r) => {
   const stateEl = document.getElementById('state');
   const text = document.createTextNode(JSON.stringify(r));
-  stateEl.append(text);
+  stateEl?.append(text);
 });

@@ -242,10 +242,10 @@ jobs:
           install: true
           build: yarn build
           start: yarn preview
-          wait-on: 'http://127.0.0.1:5173'
+          wait-on: 'http://127.0.0.1:4173'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/vite.cy.js
+          spec: ../../cypress/e2e/vite-prod.cy.js
           config-file: ../../cypress.config.js
           working-directory: vite/js
   cypress-run-vite-ts-dev:
@@ -292,10 +292,10 @@ jobs:
           install: true
           build: yarn build
           start: yarn preview
-          wait-on: 'http://127.0.0.1:5173'
+          wait-on: 'http://127.0.0.1:4173'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/vite.cy.js
+          spec: ../../cypress/e2e/vite-prod.cy.js
           config-file: ../../cypress.config.js
           working-directory: vite/ts
   cypress-run-webpack4-js-dev:
@@ -366,7 +366,7 @@ jobs:
           install: true
           build: yarn build
           start: yarn start
-          wait-on: 'http://localhost:8001'
+          wait-on: 'http://localhost:8081'
           wait-on-timeout: 120
           browser: chrome
           spec: ../../cypress/e2e/webpack5.cy.js
@@ -391,7 +391,7 @@ jobs:
           install: true
           build: yarn build
           start: yarn start
-          wait-on: 'http://localhost:8001'
+          wait-on: 'http://localhost:8081'
           wait-on-timeout: 120
           browser: chrome
           spec: ../../cypress/e2e/webpack5.cy.js
