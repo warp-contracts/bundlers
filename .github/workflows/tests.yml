@@ -415,7 +415,7 @@ jobs:
         with:
           install: true
           build: yarn build
-          start: yarn start
+          start: yarn preview
           wait-on: 'http://localhost:8090'
           wait-on-timeout: 120
           browser: chrome
