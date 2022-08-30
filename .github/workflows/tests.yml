@@ -23,578 +23,579 @@ jobs:
           wait-on: 'http://localhost:3000'
           wait-on-timeout: 120
           browser: chrome
-          spec: ../../cypress/e2e/next.cy.js
+          spec: ../../cypress/e2e/test.cy.js
           config-file: ../../cypress.config.js
+          config: baseUrl=http://localhost:3000
           working-directory: next/js
-  cypress-run-next-js-prod:
-    runs-on: ubuntu-latest
-    needs: cypress-run-next-js-dev
-    name: Next js prod
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn start
-          wait-on: 'http://localhost:3000'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/next.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: next/js
-  cypress-run-next-ts-dev:
-    runs-on: ubuntu-latest
-    needs: cypress-run-next-js-prod
-    name: Next ts dev
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn dev
-          wait-on: 'http://localhost:3000'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/next.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: next/ts
-  cypress-run-next-ts-prod:
-    runs-on: ubuntu-latest
-    needs: cypress-run-next-ts-dev
-    name: Next ts prod
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn start
-          wait-on: 'http://localhost:3000'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/next.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: next/ts
-  cypress-run-parcel-js-dev:
-    runs-on: ubuntu-latest
-    name: Parcel js dev
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn start
-          wait-on: 'http://localhost:1234'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/parcel.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: parcel/js
-  cypress-run-parcel-js-prod:
-    runs-on: ubuntu-latest
-    needs: cypress-run-parcel-js-dev
-    name: Parcel js prod
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn preview
-          wait-on: 'http://localhost:1334'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/parcel-prod.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: parcel/js
-  cypress-run-parcel-ts-dev:
-    runs-on: ubuntu-latest
-    needs: cypress-run-parcel-js-prod
-    name: Parcel ts dev
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn start
-          wait-on: 'http://localhost:1234'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/parcel.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: parcel/ts
-  cypress-run-parcel-ts-prod:
-    runs-on: ubuntu-latest
-    needs: cypress-run-parcel-ts-dev
-    name: Parcel ts prod
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn preview
-          wait-on: 'http://localhost:1334'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/parcel-prod.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: parcel/ts
-  cypress-run-rollup-js-dev:
-    runs-on: ubuntu-latest
-    name: Rollup js dev
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn start
-          wait-on: 'http://localhost:8000'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/rollup.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: rollup/js
-  cypress-run-rollup-js-prod:
-    runs-on: ubuntu-latest
-    needs: cypress-run-rollup-js-dev
-    name: Rollup js prod
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn preview
-          wait-on: 'http://localhost:8001'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/rollup-prod.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: rollup/js
-  cypress-run-rollup-ts-dev:
-    runs-on: ubuntu-latest
-    needs: cypress-run-rollup-js-prod
-    name: Rollup ts dev
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn start
-          wait-on: 'http://localhost:8000'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/rollup.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: rollup/ts
-  cypress-run-rollup-ts-prod:
-    runs-on: ubuntu-latest
-    needs: cypress-run-rollup-ts-dev
-    name: Rollup ts prod
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn preview
-          wait-on: 'http://localhost:8001'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/rollup-prod.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: rollup/ts
-  cypress-run-vite-js-dev:
-    runs-on: ubuntu-latest
-    name: Vite js dev
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn dev
-          wait-on: 'http://127.0.0.1:5173'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/vite.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: vite/js
-  cypress-run-vite-js-prod:
-    runs-on: ubuntu-latest
-    needs: cypress-run-vite-js-dev
-    name: Vite js prod
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn preview
-          wait-on: 'http://127.0.0.1:4173'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/vite-prod.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: vite/js
-  cypress-run-vite-ts-dev:
-    runs-on: ubuntu-latest
-    needs: cypress-run-vite-js-prod
-    name: Vite ts dev
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn preview
-          wait-on: ' http://127.0.0.1:5173'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/vite.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: vite/ts
-  cypress-run-vite-ts-prod:
-    runs-on: ubuntu-latest
-    needs: cypress-run-vite-ts-dev
-    name: Vite ts prod
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn preview
-          wait-on: 'http://127.0.0.1:4173'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/vite-prod.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: vite/ts
-  cypress-run-webpack4-js-dev:
-    runs-on: ubuntu-latest
-    name: Webpack4 js dev
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build-dev
-          start: yarn start
-          wait-on: 'http://localhost:8080'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/webpack4.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: webpack4/js
-  cypress-run-webpack4-js-prod:
-    runs-on: ubuntu-latest
-    needs: cypress-run-webpack4-js-dev
-    name: Webpack4 js prod
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn preview
-          wait-on: 'http://localhost:8090'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/webpack4-prod.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: webpack4/js
-  cypress-run-webpack4-ts-dev:
-    runs-on: ubuntu-latest
-    needs: cypress-run-webpack4-js-prod
-    name: Webpack 4 ts dev
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build-dev
-          start: yarn start
-          wait-on: 'http://localhost:8080'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/webpack4.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: webpack4/ts
-  cypress-run-webpack4-ts-prod:
-    runs-on: ubuntu-latest
-    needs: cypress-run-webpack4-ts-dev
-    name: Webpack4 ts prod
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn preview
-          wait-on: 'http://localhost:8090'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/webpack4-prod.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: webpack4/ts
-  cypress-run-webpack5-js-dev:
-    runs-on: ubuntu-latest
-    name: Webpack5 js dev
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn start
-          wait-on: 'http://localhost:8081'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/webpack5.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: webpack5/js
-  cypress-run-webpack5-js-prod:
-    runs-on: ubuntu-latest
-    name: Webpack5 js prod
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn preview
-          wait-on: 'http://localhost:8091'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/webpack5-prod.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: webpack5/js
-  cypress-run-webpack5-ts-dev:
-    runs-on: ubuntu-latest
-    needs: cypress-run-webpack5-js-dev
-    name: Webpack5 ts dev
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn start
-          wait-on: 'http://localhost:8081'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/webpack5.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: webpack5/ts
-  cypress-run-webpack5-ts-prod:
-    runs-on: ubuntu-latest
-    needs: cypress-run-webpack5-ts-dev
-    name: Webpack5 ts prod
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-      - name: Install dependencies
-        uses: cypress-io/github-action@v4
-        with:
-          runTests: false
-      - name: 'UI Tests - Chrome'
-        uses: cypress-io/github-action@v4
-        with:
-          install: true
-          build: yarn build
-          start: yarn preview
-          wait-on: 'http://localhost:8091'
-          wait-on-timeout: 120
-          browser: chrome
-          spec: ../../cypress/e2e/webpack5-prod.cy.js
-          config-file: ../../cypress.config.js
-          working-directory: webpack5/ts
+  # cypress-run-next-js-prod:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-next-js-dev
+  #   name: Next js prod
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn start
+  #         wait-on: 'http://localhost:3000'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/next.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: next/js
+  # cypress-run-next-ts-dev:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-next-js-prod
+  #   name: Next ts dev
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn dev
+  #         wait-on: 'http://localhost:3000'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/next.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: next/ts
+  # cypress-run-next-ts-prod:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-next-ts-dev
+  #   name: Next ts prod
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn start
+  #         wait-on: 'http://localhost:3000'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/next.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: next/ts
+  # cypress-run-parcel-js-dev:
+  #   runs-on: ubuntu-latest
+  #   name: Parcel js dev
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn start
+  #         wait-on: 'http://localhost:1234'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/parcel.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: parcel/js
+  # cypress-run-parcel-js-prod:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-parcel-js-dev
+  #   name: Parcel js prod
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn preview
+  #         wait-on: 'http://localhost:1334'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/parcel-prod.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: parcel/js
+  # cypress-run-parcel-ts-dev:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-parcel-js-prod
+  #   name: Parcel ts dev
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn start
+  #         wait-on: 'http://localhost:1234'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/parcel.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: parcel/ts
+  # cypress-run-parcel-ts-prod:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-parcel-ts-dev
+  #   name: Parcel ts prod
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn preview
+  #         wait-on: 'http://localhost:1334'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/parcel-prod.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: parcel/ts
+  # cypress-run-rollup-js-dev:
+  #   runs-on: ubuntu-latest
+  #   name: Rollup js dev
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn start
+  #         wait-on: 'http://localhost:8000'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/rollup.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: rollup/js
+  # cypress-run-rollup-js-prod:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-rollup-js-dev
+  #   name: Rollup js prod
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn preview
+  #         wait-on: 'http://localhost:8001'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/rollup-prod.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: rollup/js
+  # cypress-run-rollup-ts-dev:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-rollup-js-prod
+  #   name: Rollup ts dev
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn start
+  #         wait-on: 'http://localhost:8000'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/rollup.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: rollup/ts
+  # cypress-run-rollup-ts-prod:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-rollup-ts-dev
+  #   name: Rollup ts prod
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn preview
+  #         wait-on: 'http://localhost:8001'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/rollup-prod.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: rollup/ts
+  # cypress-run-vite-js-dev:
+  #   runs-on: ubuntu-latest
+  #   name: Vite js dev
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn dev
+  #         wait-on: 'http://127.0.0.1:5173'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/vite.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: vite/js
+  # cypress-run-vite-js-prod:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-vite-js-dev
+  #   name: Vite js prod
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn preview
+  #         wait-on: 'http://127.0.0.1:4173'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/vite-prod.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: vite/js
+  # cypress-run-vite-ts-dev:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-vite-js-prod
+  #   name: Vite ts dev
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn preview
+  #         wait-on: ' http://127.0.0.1:5173'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/vite.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: vite/ts
+  # cypress-run-vite-ts-prod:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-vite-ts-dev
+  #   name: Vite ts prod
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn preview
+  #         wait-on: 'http://127.0.0.1:4173'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/vite-prod.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: vite/ts
+  # cypress-run-webpack4-js-dev:
+  #   runs-on: ubuntu-latest
+  #   name: Webpack4 js dev
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build-dev
+  #         start: yarn start
+  #         wait-on: 'http://localhost:8080'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/webpack4.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: webpack4/js
+  # cypress-run-webpack4-js-prod:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-webpack4-js-dev
+  #   name: Webpack4 js prod
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn preview
+  #         wait-on: 'http://localhost:8090'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/webpack4-prod.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: webpack4/js
+  # cypress-run-webpack4-ts-dev:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-webpack4-js-prod
+  #   name: Webpack 4 ts dev
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build-dev
+  #         start: yarn start
+  #         wait-on: 'http://localhost:8080'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/webpack4.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: webpack4/ts
+  # cypress-run-webpack4-ts-prod:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-webpack4-ts-dev
+  #   name: Webpack4 ts prod
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn preview
+  #         wait-on: 'http://localhost:8090'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/webpack4-prod.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: webpack4/ts
+  # cypress-run-webpack5-js-dev:
+  #   runs-on: ubuntu-latest
+  #   name: Webpack5 js dev
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn start
+  #         wait-on: 'http://localhost:8081'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/webpack5.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: webpack5/js
+  # cypress-run-webpack5-js-prod:
+  #   runs-on: ubuntu-latest
+  #   name: Webpack5 js prod
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn preview
+  #         wait-on: 'http://localhost:8091'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/webpack5-prod.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: webpack5/js
+  # cypress-run-webpack5-ts-dev:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-webpack5-js-dev
+  #   name: Webpack5 ts dev
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn start
+  #         wait-on: 'http://localhost:8081'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/webpack5.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: webpack5/ts
+  # cypress-run-webpack5-ts-prod:
+  #   runs-on: ubuntu-latest
+  #   needs: cypress-run-webpack5-ts-dev
+  #   name: Webpack5 ts prod
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: '16'
+  #     - name: Install dependencies
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         runTests: false
+  #     - name: 'UI Tests - Chrome'
+  #       uses: cypress-io/github-action@v4
+  #       with:
+  #         install: true
+  #         build: yarn build
+  #         start: yarn preview
+  #         wait-on: 'http://localhost:8091'
+  #         wait-on-timeout: 120
+  #         browser: chrome
+  #         spec: ../../cypress/e2e/webpack5-prod.cy.js
+  #         config-file: ../../cypress.config.js
+  #         working-directory: webpack5/ts
       # - name: 'UI Tests - Chrome'
       #   uses: cypress-io/github-action@v4
       #   with:
