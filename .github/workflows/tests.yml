@@ -520,9 +520,9 @@ jobs:
           spec: ../../cypress/e2e/webpack5.cy.js
           config-file: ../../cypress.config.js
           working-directory: webpack5/ts
-  cypress-run-webpack5-ts-dev:
+  cypress-run-webpack5-ts-prod:
     runs-on: ubuntu-latest
-    needs: cypress-run-webpack5-js-prod
+    needs: cypress-run-webpack5-ts-dev
     name: Webpack5 ts prod
     steps:
       - uses: actions/checkout@v2
