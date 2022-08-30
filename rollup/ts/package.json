@@ -19,7 +19,7 @@
     "tsc:watch": "tsc --watch",
     "build": "rimraf dist && tsc && rollup -c rollup.config.js",
     "start": "concurrently --kill-others --names tsc,web-dev-server \"yarn run tsc:watch\" \"web-dev-server --config web-dev-server.config.js\"",
-    "preview": "http-server ./build --port 8001"
+    "preview": "http-server ./dist --port 8001"
   },
   "dependencies": {
     "warp-contracts": "1.2.0-bundles.19"
