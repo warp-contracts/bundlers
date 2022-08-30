@@ -351,7 +351,7 @@ jobs:
           spec: ../../cypress/e2e/test.cy.js
           config-file: ../../cypress.config.js
           working-directory: webpack4/ts
-cypress-run-webpack5-js-dev:
+  cypress-run-webpack5-js-dev:
     runs-on: ubuntu-latest
     needs: cypress-run-webpack4-ts-dev
     name: E2E on Chrome
