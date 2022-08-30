@@ -25,7 +25,7 @@ jobs:
           browser: chrome
           spec: ../../cypress/e2e/test.cy.js
           config-file: ../../cypress.config.js
-          config: baseUrl=http://localhost:3000,specPattern=../../cypress/e2e/**/*.cy.{js,jsx,ts,tsx}
+          config: baseUrl=http://localhost:3000
           working-directory: next/js
   # cypress-run-next-js-prod:
   #   runs-on: ubuntu-latest
