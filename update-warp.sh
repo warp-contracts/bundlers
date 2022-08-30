@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="1.2.0-bundles.19"
+version="1.2.0-rc.2"
 
 set -e
 

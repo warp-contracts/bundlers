@@ -5,6 +5,10 @@ const path = require('path');
 module.exports = {
   mode: 'development',
   target: 'web',
+  devServer: {
+    static: './dist',
+    port: 8081,
+  },
   resolve: {
     extensions: ['.ts', '.js'],
   },
