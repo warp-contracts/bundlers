@@ -25,7 +25,7 @@ jobs:
           browser: chrome
           spec: ../../cypress/e2e/test.cy.js
           config-file: ../../cypress.config.js
-          config: baseUrl=http://localhost:3000
+          config: baseUrl=http://localhost:3000,specPattern=../../cypress/e2e/**/*.cy.{js,jsx,ts,tsx}
           working-directory: next/js
   # cypress-run-next-js-prod:
   #   runs-on: ubuntu-latest
@@ -367,8 +367,8 @@ jobs:
   #       with:
   #         install: true
   #         build: yarn build
-  #         start: yarn preview
-  #         wait-on: ' http://127.0.0.1:5173'
+  #         start: yarn start
+  #         wait-on: ' http://127.0.0.1:4173'
   #         wait-on-timeout: 120
   #         browser: chrome
   #         spec: ../../cypress/e2e/vite.cy.js
