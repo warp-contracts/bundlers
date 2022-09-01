@@ -20,6 +20,6 @@
     "preview": "http-server ./dist --port 8001"
   },
   "dependencies": {
-    "warp-contracts": "1.2.0-rc.2"
+    "warp-contracts": "1.2.1"
   }
 }
