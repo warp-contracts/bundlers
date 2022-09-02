@@ -12,6 +12,6 @@
     "vite": "^3.0.7"
   },
   "dependencies": {
-    "warp-contracts": "1.2.1"
+    "warp-contracts": "1.2.2"
   }
 }
