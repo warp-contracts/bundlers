@@ -5,6 +5,13 @@ const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
 const warp = WarpFactory.forMainnet({...defaultCacheOptions, inMemory: true});
 
 const deployWriteAndRead = async () => {
+  /* TODO: verify WASM loading
+  const contract = warp.contract("f4skRMstoodrRluvl4OCY-Xo50AamgxYwBCZKzw3Uvo");
+  const { cachedValue } = await contract.readState();
+  console.log(cachedValue.state)
+  return cachedValue.state;
+   */
+
   const wallet = await loadWallet();
   const walletAddress = await warp.arweave.wallets.getAddress(wallet);
   console.log('wallet address', walletAddress);
