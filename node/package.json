@@ -15,6 +15,6 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
-    "warp-contracts": "1.2.7"
+    "warp-contracts": "1.2.9"
   }
 }
