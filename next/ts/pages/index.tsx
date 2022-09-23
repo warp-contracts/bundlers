@@ -1,28 +1,38 @@
 import styles from '../styles/Home.module.css';
 import { defaultCacheOptions, WarpFactory } from 'warp-contracts';
 import { useEffect, useState } from 'react';
+import contractSrc from 'raw-loader!../../../contracts/contract.js';
 
 const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
+const WASM_SOURCE_TX_ID = 'I3fXL99CwJTrYYaqbmG2qxY3WU9wfC7drwIP7Px5p_o';
 
 const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true });
 
-const deployWriteAndRead = async () => {
+const deployWriteAndRead = async (srcTxId, file, name) => {
   const wallet = await loadWallet();
   const walletAddress = await warp.arweave.wallets.getAddress(wallet);
   console.log('wallet address', walletAddress);
 
   const initialState = {
     ticker: 'WB',
-    name: 'Web Bundlers PST',
+    name,
     owner: walletAddress,
     balances: {},
   };
-
-  const { contractTxId } = await warp.createContract.deployFromSourceTx({
-    wallet,
-    initState: JSON.stringify(initialState),
-    srcTxId: SOURCE_TX_ID,
-  });
+  let contractTxId;
+  if (file) {
+    ({ contractTxId: contractTxId } = await warp.createContract.deploy({
+      wallet,
+      initState: JSON.stringify(initialState),
+      src: contractSrc,
+    }));
+  } else {
+    ({ contractTxId: contractTxId } = await warp.createContract.deployFromSourceTx({
+      wallet,
+      initState: JSON.stringify(initialState),
+      srcTxId,
+    }));
+  }
   console.log('contract id', contractTxId);
 
   const contract = warp.contract(contractTxId).connect(wallet);
@@ -37,18 +47,26 @@ const loadWallet = async () => {
 };
 
 export default function Home() {
+  const [srcContractState, setSrcContractState] = useState();
+  const [wasmSrcContractState, setWasmSrcContractState] = useState();
   const [contractState, setContractState] = useState();
   useEffect(() => {
     async function fetchContractData() {
-      const result = await deployWriteAndRead();
-      setContractState(result as any);
+      const resultSrc = await deployWriteAndRead(SOURCE_TX_ID, null, 'SRC CONTRACT');
+      const resultSrcWasm = await deployWriteAndRead(WASM_SOURCE_TX_ID, null, 'WASM SRC CONTRACT');
+      const result = await deployWriteAndRead(null, contractSrc, 'CONTRACT');
+      setSrcContractState(resultSrc);
+      setWasmSrcContractState(resultSrcWasm);
+      setContractState(result);
     }
 
     fetchContractData();
   }, []);
   return (
     <div className={styles.container}>
-      <div>{JSON.stringify(contractState)}</div>
+      <div id="state">{JSON.stringify(contractState)}</div>
+      <div id="wasmSrcState">{JSON.stringify(wasmSrcContractState)}</div>
+      <div id="srcState">{JSON.stringify(srcContractState)}</div>
     </div>
   );
 }

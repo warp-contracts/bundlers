@@ -1,33 +1,35 @@
 import { WarpFactory, defaultCacheOptions } from 'warp-contracts/web';
-
+import contractSrc from '../../contracts/contract.js?raw';
+const WASM_SOURCE_TX_ID = 'I3fXL99CwJTrYYaqbmG2qxY3WU9wfC7drwIP7Px5p_o';
 const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
+console.log(contractSrc);
+const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true });
 
-const warp = WarpFactory.forMainnet({...defaultCacheOptions, inMemory: true});
-
-const deployWriteAndRead = async () => {
-  /* TODO: verify WASM loading
-  const contract = warp.contract("f4skRMstoodrRluvl4OCY-Xo50AamgxYwBCZKzw3Uvo");
-  const { cachedValue } = await contract.readState();
-  console.log(cachedValue.state)
-  return cachedValue.state;
-   */
-
+const deployWriteAndRead = async (srcTxId, file, name) => {
   const wallet = await loadWallet();
   const walletAddress = await warp.arweave.wallets.getAddress(wallet);
   console.log('wallet address', walletAddress);
 
   const initialState = {
     ticker: 'WB',
-    name: 'Web Bundlers PST',
+    name,
     owner: walletAddress,
     balances: {},
   };
-
-  const { contractTxId } = await warp.createContract.deployFromSourceTx({
-    wallet,
-    initState: JSON.stringify(initialState),
-    srcTxId: SOURCE_TX_ID,
-  });
+  let contractTxId;
+  if (file) {
+    ({ contractTxId: contractTxId } = await warp.createContract.deploy({
+      wallet,
+      initState: JSON.stringify(initialState),
+      src: contractSrc,
+    }));
+  } else {
+    ({ contractTxId: contractTxId } = await warp.createContract.deployFromSourceTx({
+      wallet,
+      initState: JSON.stringify(initialState),
+      srcTxId,
+    }));
+  }
   console.log('contract id', contractTxId);
 
   const contract = warp.contract(contractTxId).connect(wallet);
@@ -42,7 +44,19 @@ const loadWallet = async () => {
   return await warp.arweave.wallets.generate();
 };
 
-deployWriteAndRead().then((r) => {
+deployWriteAndRead(SOURCE_TX_ID, null, 'SRC CONTRACT').then((r) => {
+  const stateEl = document.getElementById('srcState');
+  const text = document.createTextNode(JSON.stringify(r));
+  stateEl.append(text);
+});
+
+deployWriteAndRead(WASM_SOURCE_TX_ID, null, 'WASM SRC CONTRACT').then((r) => {
+  const stateEl = document.getElementById('wasmSrcState');
+  const text = document.createTextNode(JSON.stringify(r));
+  stateEl.append(text);
+});
+
+deployWriteAndRead(null, contractSrc, 'CONTRACT').then((r) => {
   const stateEl = document.getElementById('state');
   const text = document.createTextNode(JSON.stringify(r));
   stateEl.append(text);

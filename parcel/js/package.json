@@ -9,14 +9,17 @@
     "preview": "http-server ./dist/ --port 1334"
   },
   "devDependencies": {
+    "@parcel/transformer-inline-string": "2.7.0",
     "constants-browserify": "^1.0.0",
     "crypto-browserify": "^3.12.0",
     "http-server": "^14.1.1",
     "parcel": "latest",
+    "path-browserify": "^1.0.1",
     "process": "^0.11.10",
     "stream-browserify": "^3.0.0"
   },
   "dependencies": {
-    "warp-contracts": "1.2.10"
+    "raw-loader": "^4.0.2",
+    "warp-contracts": "1.2.11"
   }
 }
