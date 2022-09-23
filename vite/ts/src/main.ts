@@ -1,5 +1,5 @@
 import { WarpFactory, defaultCacheOptions } from 'warp-contracts/web';
-import contractSrc from '../../contracts/contract.js?raw';
+import contractSrc from './contract.js?raw';
 const WASM_SOURCE_TX_ID = 'I3fXL99CwJTrYYaqbmG2qxY3WU9wfC7drwIP7Px5p_o';
 const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
 console.log(contractSrc);

@@ -13,7 +13,8 @@ export default merge(baseConfig, {
   plugins: [
     nodeResolve(),
     string({
-      include: '**/*.js',
+      include: './src/contract.js',
+      exclude: ['**/main.js'],
     }),
   ],
 });

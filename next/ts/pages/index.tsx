@@ -47,9 +47,9 @@ const loadWallet = async () => {
 };
 
 export default function Home() {
-  const [srcContractState, setSrcContractState] = useState();
-  const [wasmSrcContractState, setWasmSrcContractState] = useState();
-  const [contractState, setContractState] = useState();
+  const [srcContractState, setSrcContractState] = useState<any>();
+  const [wasmSrcContractState, setWasmSrcContractState] = useState<any>();
+  const [contractState, setContractState] = useState<any>();
   useEffect(() => {
     async function fetchContractData() {
       const resultSrc = await deployWriteAndRead(SOURCE_TX_ID, null, 'SRC CONTRACT');

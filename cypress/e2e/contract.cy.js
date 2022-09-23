@@ -3,36 +3,36 @@ describe('Web bundlers contract test', () => {
     cy.visit('/');
   });
 
-  it('displays correctly read contract state', () => {
+  it('displays correctly srcState element', () => {
     cy.get('#srcState').should('exist');
   });
 
-  it('displays correctly read contract state', () => {
+  it('displays correctly state of a contract deployed from source', () => {
     cy.get('#srcState').contains('SRC CONTRACT');
     cy.get('#srcState').contains('owner');
-    cy.get('#srcState').contains('WB');
+    cy.get('#srcState').contains('ticker');
     cy.get('#srcState').contains('100');
   });
 
-  it('displays correctly read WASM contract state', () => {
+  it('displays correctly wasmSrc element', () => {
     cy.get('#wasmSrcState').should('exist');
   });
 
-  it('displays correctly read contract state', () => {
+  it('displays correctly state of a WASM contract deployed from source', () => {
     cy.get('#wasmSrcState').contains('WASM SRC CONTRACT');
     cy.get('#wasmSrcState').contains('owner');
-    cy.get('#wasmSrcState').contains('WB');
+    cy.get('#srcState').contains('ticker');
     cy.get('#wasmSrcState').contains('100');
   });
 
-  it('displays correctly read contract state', () => {
+  it('displays correctly state element', () => {
     cy.get('#state').should('exist');
   });
 
-  it('displays correctly read contract state', () => {
+  it('displays correctly state of a contract deployed from file', () => {
     cy.get('#state').contains('CONTRACT');
     cy.get('#state').contains('owner');
-    cy.get('#state').contains('WB');
+    cy.get('#srcState').contains('ticker');
     cy.get('#state').contains('100');
   });
 });

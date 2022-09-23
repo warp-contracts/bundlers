@@ -1,6 +1,7 @@
 import merge from 'deepmerge';
 import { createSpaConfig } from '@open-wc/building-rollup';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import { string } from 'rollup-plugin-string';
 
 const baseConfig = createSpaConfig({
   developmentMode: process.env.ROLLUP_WATCH === 'true',
@@ -13,7 +14,7 @@ export default merge(baseConfig, {
   plugins: [
     nodeResolve(),
     string({
-      include: '**/*.js',
+      include: '**.js',
     }),
   ],
 });

@@ -65,8 +65,8 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <div id="state">{JSON.stringify(contractState)}</div>
-      <div id="wasmState">{JSON.stringify(wasmSrcContractState)}</div>
-      <div id="resultDeploy">{JSON.stringify(srcContractState)}</div>
+      <div id="wasmSrcState">{JSON.stringify(wasmSrcContractState)}</div>
+      <div id="srcState">{JSON.stringify(srcContractState)}</div>
     </div>
   );
 }

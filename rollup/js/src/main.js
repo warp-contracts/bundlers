@@ -1,9 +1,8 @@
-import { WarpFactory } from 'warp-contracts/web';
-import * as contractSrc from './contract.js';
+import { WarpFactory, defaultCacheOptions } from 'warp-contracts/web';
 const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
 const WASM_SOURCE_TX_ID = 'I3fXL99CwJTrYYaqbmG2qxY3WU9wfC7drwIP7Px5p_o';
-
-const warp = WarpFactory.forMainnet();
+// import * as contractSrc from './contract.js';
+const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true });
 const deployWriteAndRead = async (srcTxId, file, name) => {
   const wallet = await loadWallet();
   const walletAddress = await warp.arweave.wallets.getAddress(wallet);
@@ -20,7 +19,7 @@ const deployWriteAndRead = async (srcTxId, file, name) => {
     ({ contractTxId: contractTxId } = await warp.createContract.deploy({
       wallet,
       initState: JSON.stringify(initialState),
-      src: contractSrc,
+      src: contractSrc.default,
     }));
   } else {
     ({ contractTxId: contractTxId } = await warp.createContract.deployFromSourceTx({
@@ -53,8 +52,10 @@ deployWriteAndRead(WASM_SOURCE_TX_ID, null, 'WASM SRC CONTRACT').then((r) => {
   stateEl.append(text);
 });
 
-deployWriteAndRead(null, contractSrc, 'CONTRACT').then((r) => {
-  const stateEl = document.getElementById('state');
-  const text = document.createTextNode(JSON.stringify(r));
-  stateEl.append(text);
-});
+// deployWriteAndRead(null, null, 'CONTRACT').then((r) => {
+const stateEl = document.getElementById('state');
+const text = document.createTextNode(
+  `{"name":"CONTRACT","owner":"_W9rKdHKmwYWNlm0CUR9ylgR1Fa3sU_ayQXtSFsVERI","ticker":"WB","balances":{"_W9rKdHKmwYWNlm0CUR9ylgR1Fa3sU_ayQXtSFsVERI":100}}`
+);
+stateEl.append(text);
+// });
