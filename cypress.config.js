@@ -7,5 +7,6 @@ module.exports = defineConfig({
     video: false,
     screenshotOnRunFailure: false,
     specPattern: '../../cypress/e2e/**/*.cy.{js,jsx,ts,tsx}',
+    defaultCommandTimeout: 20000,
   },
 });
