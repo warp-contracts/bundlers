@@ -3180,27 +3180,6 @@ vm2@3.9.11:
     acorn "^8.7.0"
     acorn-walk "^8.2.0"
 
-warp-contracts@1.2.20:
-  version "1.2.20"
-  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.2.20.tgz#e83ff5ca0e74e5e846ac93aa26df144f298d1df9"
-  integrity sha512-Xfr0rvdF6HYSZZu5mpxobEaVkom4z8cU/o6nDRZcbH6P6WDaNc3VWyE1Qqy3mz46H9RSoEC4qjYZJTXTjiFGjg==
-  dependencies:
-    "@assemblyscript/loader" "^0.19.23"
-    "@idena/vrf-js" "^1.0.1"
-    archiver "^5.3.0"
-    arweave "1.11.6"
-    elliptic "^6.5.4"
-    events "3.3.0"
-    fast-copy "^3.0.0"
-    level "^8.0.0"
-    memory-level "^1.0.0"
-    redstone-isomorphic "1.1.8"
-    redstone-wasm-metering "1.0.3"
-    safe-stable-stringify "2.4.1"
-    stream-buffers "^3.0.2"
-    unzipit "^1.4.0"
-    vm2 "3.9.11"
-
 warp-contracts@1.2.25:
   version "1.2.25"
   resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.2.25.tgz#e91edcc1b0df4f4d989fe57ed0c93a8b98f350d6"
@@ -3222,17 +3201,16 @@ warp-contracts@1.2.25:
     unzipit "^1.4.0"
     vm2 "3.9.11"
 
-warp-signature@1.0.4:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/warp-signature/-/warp-signature-1.0.4.tgz#34868050192e10b3d2577db13fe1c2ec5242086f"
-  integrity sha512-VfIiTmo4ofimBN0FIB2g88MKsL6oZp3B5T2ZKlrH7i5XhFBuYQf9PD7WIK3jtYLVV7wtSIsyuTqheqr4a4XxTA==
+warp-signature@1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/warp-signature/-/warp-signature-1.0.5.tgz#540a5d8e92bbf11c0ad8934f7d9707aa63be90e5"
+  integrity sha512-J8xGiiWNW0Ur3wCdjKfTdJWpv7iHwWlCdkvW+5TGkr7LGRKXxUOyeJ/bJMnAmPP9C1QCQ9wyhPm7JvZESlLhYA==
   dependencies:
     "@metamask/onboarding" "^1.0.1"
     "@metamask/providers" "^10.0.0"
     arweave "^1.11.6"
     ethers "^5.7.2"
     safe-stable-stringify "^2.4.1"
-    warp-contracts "1.2.20"
 
 webextension-polyfill-ts@^0.22.0:
   version "0.22.0"
