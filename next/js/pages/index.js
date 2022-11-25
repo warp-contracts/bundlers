@@ -2,7 +2,6 @@ import styles from '../styles/Home.module.css';
 import { defaultCacheOptions, WarpFactory } from 'warp-contracts';
 import { useEffect, useState } from 'react';
 import contractSrc from 'raw-loader!../../../contracts/contract.js';
-import dynamic from 'next/dynamic';
 
 const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
 const WASM_SOURCE_TX_ID = 'I3fXL99CwJTrYYaqbmG2qxY3WU9wfC7drwIP7Px5p_o';
@@ -52,7 +51,22 @@ const writeMetamaskInteraction = async (e) => {
   const contract = warp
     .contract('48G_IllU9G-PRyl4Ods88STtQ1h0Eo8zHQUHdNlHKZw')
     .connect({ signer: evmSignature, signatureType: 'ethereum' });
-  contract.writeInteraction({ function: 'postMessage', content: 'lol' });
+  contract.writeInteraction({ function: 'postMessage', content: 'lol2' });
+};
+
+const deployMetamaskContract = async (e) => {
+  const initialState = {
+    ticker: 'WB',
+    name: 'WB',
+    balances: {},
+  };
+  const evmSignature = (await import('warp-signature')).evmSignature;
+  const { contractTxId } = await warp.createContract.deploy({
+    wallet: { signer: evmSignature, signatureType: 'ethereum' },
+    initState: JSON.stringify(initialState),
+    src: contractSrc,
+  });
+  console.log(contractTxId);
 };
 
 export default function Home() {
@@ -78,6 +92,7 @@ export default function Home() {
       <div id="wasmSrcState">{JSON.stringify(wasmSrcContractState)}</div>
       <div id="srcState">{JSON.stringify(srcContractState)}</div>
       <button onClick={writeMetamaskInteraction}>Sign interaction Metamask</button>
+      <button onClick={deployMetamaskContract}>Deploy Metamask contract</button>
     </div>
   );
 }

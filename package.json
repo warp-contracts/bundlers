@@ -70,6 +70,6 @@
   },
   "dependencies": {
     "raw-loader": "^4.0.2",
-    "warp-contracts": "^1.2.10"
+    "warp-contracts": "1.2.23"
   }
 }
