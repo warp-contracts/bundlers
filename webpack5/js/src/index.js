@@ -6,37 +6,13 @@ const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
 const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true });
 
 const deployWriteAndRead = async (srcTxId, file, name) => {
-  const wallet = await loadWallet();
-  const walletAddress = await warp.arweave.wallets.getAddress(wallet);
-  console.log('wallet address', walletAddress);
-
-  const initialState = {
-    ticker: 'WB',
-    name,
-    owner: walletAddress,
-    balances: {},
-  };
-  let contractTxId;
-  if (file) {
-    ({ contractTxId: contractTxId } = await warp.createContract.deploy({
-      wallet,
-      initState: JSON.stringify(initialState),
-      src: contractSrc,
-    }));
-  } else {
-    ({ contractTxId: contractTxId } = await warp.createContract.deployFromSourceTx({
-      wallet,
-      initState: JSON.stringify(initialState),
-      srcTxId,
-    }));
-  }
-  console.log('contract id', contractTxId);
-
-  const contract = warp.contract(contractTxId).connect(wallet);
-  const result = await contract.writeInteraction({ function: 'mint', qty: 100 });
-  console.log(result.originalTxId);
+  const contract = warp
+    .contract("zoljIRyzG5hp-R4EZV2q8kFI49OAoy23_B9YJ_yEEws")
+    .setEvaluationOptions({allowBigInt: true});
 
   const { cachedValue } = await contract.readState();
+  console.log(cachedValue.validity);
+  console.log(cachedValue.errorMessages);
   return cachedValue.state;
 };
 
@@ -50,7 +26,7 @@ deployWriteAndRead(SOURCE_TX_ID, null, 'SRC CONTRACT').then((r) => {
   stateEl.append(text);
 });
 
-deployWriteAndRead(WASM_SOURCE_TX_ID, null, 'WASM SRC CONTRACT').then((r) => {
+/*deployWriteAndRead(WASM_SOURCE_TX_ID, null, 'WASM SRC CONTRACT').then((r) => {
   const stateEl = document.getElementById('wasmSrcState');
   const text = document.createTextNode(JSON.stringify(r));
   stateEl.append(text);
@@ -60,4 +36,4 @@ deployWriteAndRead(null, contractSrc, 'CONTRACT').then((r) => {
   const stateEl = document.getElementById('state');
   const text = document.createTextNode(JSON.stringify(r));
   stateEl.append(text);
-});
+});*/
