@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="1.2.52"
+version="1.2.43-beta.21"
 
 set -e
 

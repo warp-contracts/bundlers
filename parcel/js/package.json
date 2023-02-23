@@ -20,6 +20,6 @@
   },
   "dependencies": {
     "raw-loader": "^4.0.2",
-    "warp-contracts": "1.2.52"
+    "warp-contracts": "1.2.43-beta.21"
   }
 }

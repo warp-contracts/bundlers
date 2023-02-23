@@ -3479,10 +3479,10 @@ vm2@3.9.13:
     acorn "^8.7.0"
     acorn-walk "^8.2.0"
 
-warp-contracts@1.2.52:
-  version "1.2.52"
-  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.2.52.tgz#12328eb16935da7f2595904f263ca4065c24e88e"
-  integrity sha512-HRaCtFzFasHpun4YzAYAhJzYI4SlEpOewNH6YVjoFUoPyZ1yU3OvXgsvGC6c2wmIYJQTtaaDVHroPR3yOKZEtg==
+warp-contracts@1.2.43-beta.21:
+  version "1.2.43-beta.21"
+  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.2.43-beta.21.tgz#55a7b661a7218073ce96d82e8cb0ffb2c342ad1f"
+  integrity sha512-2ZRCWULNDeSduhgS7iNbApyECSsCOtyHgPn9AuSFlpnB7z0Z7SfIRSuycG8zDqbnIPxrkumKrsT4O4oG0uxjiA==
   dependencies:
     "@idena/vrf-js" "^1.0.1"
     archiver "^5.3.0"

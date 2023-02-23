@@ -18,7 +18,7 @@
     "webpack-dev-server": "^3.7.2"
   },
   "dependencies": {
-    "warp-contracts": "1.2.52",
+    "warp-contracts": "1.2.43-beta.21",
     "raw-loader": "^4.0.2"
   }
 }

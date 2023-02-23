@@ -13,7 +13,7 @@
     "raw-loader": "^4.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "warp-contracts": "1.2.52",
+    "warp-contracts": "1.2.43-beta.21",
     "warp-signature": "1.0.5"
   },
   "devDependencies": {
