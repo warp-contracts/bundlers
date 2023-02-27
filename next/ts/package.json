@@ -12,7 +12,8 @@
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "warp-contracts": "1.2.43-beta.21",
+    "warp-contracts": "1.2.54",
+    "warp-contracts-plugin-deploy": "1.0.0",
     "raw-loader": "^4.0.2"
   },
   "devDependencies": {

@@ -1,8 +1,10 @@
 import { WarpFactory, defaultCacheOptions } from 'warp-contracts/web';
+import { DeployPlugin, ArweaveSigner } from 'warp-contracts-plugin-deploy/web';
+
 const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
 const WASM_SOURCE_TX_ID = 'I3fXL99CwJTrYYaqbmG2qxY3WU9wfC7drwIP7Px5p_o';
 // import * as contractSrc from './contract.js';
-const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true });
+const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true }).use(new DeployPlugin());
 const deployWriteAndRead = async (srcTxId, file, name) => {
   const wallet = await loadWallet();
   const walletAddress = await warp.arweave.wallets.getAddress(wallet);
@@ -22,8 +24,8 @@ const deployWriteAndRead = async (srcTxId, file, name) => {
   //     src: contractSrc.default,
   //   }));
   // } else {
-  ({ contractTxId: contractTxId } = await warp.createContract.deployFromSourceTx({
-    wallet,
+  ({ contractTxId: contractTxId } = await warp.deployFromSourceTx({
+    wallet: new ArweaveSigner(wallet),
     initState: JSON.stringify(initialState),
     srcTxId,
   }));
