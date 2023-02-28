@@ -2,11 +2,13 @@ import styles from '../styles/Home.module.css';
 import { defaultCacheOptions, WarpFactory } from 'warp-contracts';
 import { useEffect, useState } from 'react';
 import contractSrc from 'raw-loader!../../../contracts/contract.js';
+import { DeployPlugin, ArweaveSigner, InjectedEthereumSigner } from 'warp-contracts-plugin-deploy';
+import { providers } from 'ethers';
 
 const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
 const WASM_SOURCE_TX_ID = 'I3fXL99CwJTrYYaqbmG2qxY3WU9wfC7drwIP7Px5p_o';
 
-const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true });
+const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true }).use(new DeployPlugin());
 
 const deployWriteAndRead = async (srcTxId, file, name) => {
   const wallet = await loadWallet();
@@ -22,13 +24,13 @@ const deployWriteAndRead = async (srcTxId, file, name) => {
   let contractTxId;
   if (file) {
     ({ contractTxId: contractTxId } = await warp.createContract.deploy({
-      wallet,
+      wallet: new ArweaveSigner(wallet),
       initState: JSON.stringify(initialState),
       src: contractSrc,
     }));
   } else {
-    ({ contractTxId: contractTxId } = await warp.createContract.deployFromSourceTx({
-      wallet,
+    ({ contractTxId: contractTxId } = await warp.deployFromSourceTx({
+      wallet: new ArweaveSigner(wallet),
       initState: JSON.stringify(initialState),
       srcTxId,
     }));
@@ -60,9 +62,14 @@ const deployMetamaskContract = async (e) => {
     name: 'WB',
     balances: {},
   };
-  const evmSignature = (await import('warp-signature')).evmSignature;
+  await window.ethereum.enable();
+
+  const wallet = new providers.BrowserProvider(window.ethereum);
+
+  const userSigner = new InjectedEthereumSigner(wallet);
+  await userSigner.setPublicKey();
   const { contractTxId } = await warp.createContract.deploy({
-    wallet: { signer: evmSignature, signatureType: 'ethereum' },
+    wallet: new InjectedEthereumSigner(wallet),
     initState: JSON.stringify(initialState),
     src: contractSrc,
   });

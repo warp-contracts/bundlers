@@ -1,9 +1,11 @@
 import { WarpFactory, defaultCacheOptions } from 'warp-contracts/web';
 import contractSrc from 'raw-loader!../../../contracts/contract.js';
+import { ArweaveSigner, DeployPlugin, InjectedEthereumSigner } from 'warp-contracts-plugin-deploy';
+import { providers } from 'ethers';
 const WASM_SOURCE_TX_ID = 'I3fXL99CwJTrYYaqbmG2qxY3WU9wfC7drwIP7Px5p_o';
 const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
 
-const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true });
+const warp = WarpFactory.forMainnet({ ...defaultCacheOptions, inMemory: true }).use(new DeployPlugin());
 
 const deployWriteAndRead = async (srcTxId, file, name) => {
   const wallet = await loadWallet();
@@ -18,14 +20,14 @@ const deployWriteAndRead = async (srcTxId, file, name) => {
   };
   let contractTxId;
   if (file) {
-    ({ contractTxId: contractTxId } = await warp.createContract.deploy({
-      wallet,
+    ({ contractTxId: contractTxId } = await warp.deploy({
+      wallet: new ArweaveSigner(wallet),
       initState: JSON.stringify(initialState),
       src: contractSrc,
     }));
   } else {
     ({ contractTxId: contractTxId } = await warp.createContract.deployFromSourceTx({
-      wallet,
+      wallet: new ArweaveSigner(wallet),
       initState: JSON.stringify(initialState),
       srcTxId,
     }));
@@ -61,3 +63,27 @@ deployWriteAndRead(null, contractSrc, 'CONTRACT').then((r) => {
   const text = document.createTextNode(JSON.stringify(r));
   stateEl.append(text);
 });
+
+const deployMetamaskContract = async (e) => {
+  const initialState = {
+    ticker: 'WB',
+    name: 'WB',
+    balances: {},
+  };
+  await window.ethereum.enable();
+
+  const wallet = new providers.Web3Provider(window.ethereum);
+
+  const userSigner = new InjectedEthereumSigner(wallet);
+  await userSigner.setPublicKey();
+  const { contractTxId } = await warp.deploy({
+    wallet: userSigner,
+    initState: JSON.stringify(initialState),
+    src: contractSrc,
+  });
+  console.log(contractTxId);
+};
+
+const metamaskEl = document.getElementById('metamask');
+
+metamaskEl.addEventListener('click', deployMetamaskContract);

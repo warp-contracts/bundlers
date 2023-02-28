@@ -1,6 +1,6 @@
 #!/bin/bash
 
-version="1.2.54"
+version="1.0.0"
 
 set -e
 
@@ -14,7 +14,7 @@ while IFS='' read -r line; do
   echo "Installing dependencies for $line"
   (cd "$line" \
    && tmp=$(mktemp) \
-   && jq --arg version "$version" '.dependencies."warp-contracts"=$version' package.json > "$tmp" \
+   && jq --arg version "$version" '.dependencies."warp-contracts-plugin-deploy"=$version' package.json > "$tmp" \
    && mv "$tmp" package.json \
    && yarn
   )
@@ -23,4 +23,4 @@ done < <(
 )
 
 yarn install
-git commit -a -m "skynet: warp-contracts lib update to $version" && git push origin HEAD
+git commit -a -m "skynet: warp-contracts-plugin-deploy lib update to $version" && git push origin HEAD

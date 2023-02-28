@@ -12,7 +12,7 @@ export default merge(baseConfig, {
   // any <script type="module"> inside will be bundled by Rollup
   input: './index.html',
   plugins: [
-    nodeResolve(),
+    nodeResolve({ mainFields: ['browser'], browser: true }),
     string({
       include: '**.js',
     }),
