@@ -139,7 +139,7 @@ Refer to [this directory](https://github.com/warp-contracts/bundlers/tree/main/v
 **Usage:**
 
 ```js
-import { defaultCacheOptions, WarpFactory } from 'warp-contracts/web';
+import { defaultCacheOptions, WarpFactory } from 'warp-contracts';
 
 const warp = WarpFactory.forMainnet();
 ```
@@ -172,7 +172,7 @@ Refer to [this directory](https://github.com/warp-contracts/bundlers/tree/main/w
 **Usage:**
 
 ```js
-import { WarpFactory, defaultCacheOptions } from 'warp-contracts/web';
+import { WarpFactory, defaultCacheOptions } from 'warp-contracts';
 
 const warp = WarpFactory.forMainnet();
 ```

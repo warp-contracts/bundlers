@@ -6187,8 +6187,10 @@ vm-browserify@^1.0.1:
     arlocal "^1.1.59"
     node-stdlib-browser "^1.2.0"
 
-"warp-contracts-plugin-signature@file:.yalc/warp-contracts-plugin-signature":
-  version "1.0.10"
+warp-contracts-plugin-signature@1.0.12:
+  version "1.0.12"
+  resolved "https://registry.yarnpkg.com/warp-contracts-plugin-signature/-/warp-contracts-plugin-signature-1.0.12.tgz#8ff605f42f0fd0db618c03860fddc34f90290a0b"
+  integrity sha512-ouXACH3VdKyJkDRKlb6peYVyQY4GYL1ijGBXTq6EWtXz/VfuCngeQJNEuv9mHgd55KxzxbvV1kSh4BTN/MAbKA==
   dependencies:
     "@metamask/onboarding" "^1.0.1"
     "@metamask/providers" "^10.0.0"

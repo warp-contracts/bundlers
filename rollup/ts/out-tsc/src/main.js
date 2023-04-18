@@ -1,4 +1,4 @@
-import { WarpFactory, defaultCacheOptions } from 'warp-contracts/web';
+import { WarpFactory, defaultCacheOptions } from 'warp-contracts';
 import { DeployPlugin, ArweaveSigner } from 'warp-contracts-plugin-deploy/web';
 const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
 const WASM_SOURCE_TX_ID = 'I3fXL99CwJTrYYaqbmG2qxY3WU9wfC7drwIP7Px5p_o';

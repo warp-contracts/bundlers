@@ -1,4 +1,4 @@
-import { WarpFactory as t } from 'warp-contracts/web';
+import { WarpFactory as t } from 'warp-contracts';
 const a = t.forMainnet(),
   e = async () => await a.arweave.wallets.generate();
 (async () => {

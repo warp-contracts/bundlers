@@ -1,4 +1,4 @@
-import { WarpFactory, defaultCacheOptions } from 'warp-contracts/web';
+import { WarpFactory, defaultCacheOptions } from 'warp-contracts';
 import { DeployPlugin, ArweaveSigner } from 'warp-contracts-plugin-deploy';
 
 import contractSrc from 'raw-loader!../../../contracts/contract.js';
