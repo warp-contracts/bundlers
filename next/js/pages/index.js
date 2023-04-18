@@ -49,7 +49,7 @@ const loadWallet = async () => {
 };
 
 const writeMetamaskInteraction = async (e) => {
-  const evmSignature = (await import('warp-signature')).evmSignature;
+  const evmSignature = (await import('warp-contracts-plugin-signature')).evmSignature;
   const contract = warp
     .contract('48G_IllU9G-PRyl4Ods88STtQ1h0Eo8zHQUHdNlHKZw')
     .connect({ signer: evmSignature, signatureType: 'ethereum' });
@@ -95,9 +95,9 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <div id="state">{JSON.stringify(contractState)}</div>
-      <div id="wasmSrcState">{JSON.stringify(wasmSrcContractState)}</div>
-      <div id="srcState">{JSON.stringify(srcContractState)}</div>
+      <div id='state'>{JSON.stringify(contractState)}</div>
+      <div id='wasmSrcState'>{JSON.stringify(wasmSrcContractState)}</div>
+      <div id='srcState'>{JSON.stringify(srcContractState)}</div>
       <button onClick={writeMetamaskInteraction}>Sign interaction Metamask</button>
       <button onClick={deployMetamaskContract}>Deploy Metamask contract</button>
     </div>

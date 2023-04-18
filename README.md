@@ -40,18 +40,9 @@ yarn install:node
 yarn run:node
 ```
 
+Web bundlers - [Next](#Next) - [Parcel](#Parcel) - [Rollup](#Rollup) - [Unpkg](#Unpkg) - [Vite](#Vite) - [Webpack 4](#Webpack4) - [Webpack 5](#Webpack5)
 
-Web bundlers
-    - [Next](#Next)
-    - [Parcel](#Parcel)
-    - [Rollup](#Rollup)
-    - [Unpkg](#Unpkg)
-    - [Vite](#Vite)
-    - [Webpack 4](#Webpack4)
-    - [Webpack 5](#Webpack5)
-
-Server
-    - [Node](#Node)
+Server - [Node](#Node)
 
 ### Next
 
@@ -72,7 +63,7 @@ In order for production deployment to work properly, it is needed to set `swcMin
 ```js
 const nextConfig = {
   swcMinify: false,
-}
+};
 ```
 
 ### Parcel
@@ -107,7 +98,6 @@ const warp = WarpFactory.forMainnet();
 **Additional configuration:**
 Not required.
 
-
 ### Unpkg
 
 **Directory:**
@@ -126,6 +116,7 @@ const sdk = warp.WarpFactory.forMainnet();
 ```
 
 **Additional configuration:**
+
 1. In order for Typescript project to work properly, you need to extend `Window` type by `warp`. You have few options to choose from, eg.:
 
 ```ts
@@ -135,10 +126,10 @@ const warp = window['warp'];
 or
 
 ```ts
-const warp = (<any>window).warp
+const warp = (<any>window).warp;
 ```
 
-2. Remember to set `isolatedModules` property to `false` in `compilerOptions` in your `tsconfig.json` file. 
+2. Remember to set `isolatedModules` property to `false` in `compilerOptions` in your `tsconfig.json` file.
 
 ### Vite
 
@@ -170,6 +161,7 @@ const warp = WarpFactory.forMainnet();
 ```
 
 **Additional configuration:**
+
 1. In order for Typescript project to work properly, you need to set `strict` property to `false` in the `compilerOptions` in your `tsconfig.json` file. You can also add `//@ts-ignore` above `warp-contracts` import.
 
 ### Webpack 5
@@ -186,13 +178,15 @@ const warp = WarpFactory.forMainnet();
 ```
 
 **Additional configuration:**
+
 1. In order for Typescript project to work properly, you need to set `strict` property to `false` and `moduleResolution` to `nodenext` in the `compilerOptions` in your `tsconfig.json` file. You can also add `//@ts-ignore` above `warp-contracts` import.
 
 ### Node
 
-For server side we are testing 
+For server side we are testing
+
 - `CommonJS` version in a `.js` file
-- `ECMAScript` version in a `.mjs` file 
+- `ECMAScript` version in a `.mjs` file
 - `Typescript`
   - in a `.js` file compiled with `tsc` command
   - directly in a `.ts` file executed with `ts-node` exection machine
