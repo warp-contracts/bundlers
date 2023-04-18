@@ -21,6 +21,6 @@
   "dependencies": {
     "raw-loader": "^4.0.2",
     "warp-contracts": "1.4.1",
-    "warp-contracts-plugin-deploy": "1.0.0"
+    "warp-contracts-plugin-deploy": "1.0.3"
   }
 }

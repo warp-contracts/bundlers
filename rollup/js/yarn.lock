@@ -7767,10 +7767,10 @@ vm-browserify@^1.0.1:
   resolved "https://registry.yarnpkg.com/vm-browserify/-/vm-browserify-1.1.2.tgz#78641c488b8e6ca91a75f511e7a3b32a86e5dda0"
   integrity sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==
 
-warp-contracts-plugin-deploy@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/warp-contracts-plugin-deploy/-/warp-contracts-plugin-deploy-1.0.0.tgz#c3d8ab88b8b838f59e34653589a82ae09dc4c86e"
-  integrity sha512-HU4A0GZAP6XATFv7fuHA2EUP6V+h0ZluGiv2JjH6AE6LTqFBtP+PixgtNZds5YcOf+eLO01gv15vaT7pea0W6w==
+warp-contracts-plugin-deploy@1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/warp-contracts-plugin-deploy/-/warp-contracts-plugin-deploy-1.0.3.tgz#9ca7cd53b4a7cd1b015881f1d369659bb6f9075b"
+  integrity sha512-zDF/yqHbxIDImtVKxE/hbIz824PjPOc0aXONQtnR7do0MFdF7eJqeAAA5a2W5WTHN3cplvej6y7vSv6f/E2dEg==
   dependencies:
     arbundles "^0.7.3"
     arlocal "^1.1.59"
