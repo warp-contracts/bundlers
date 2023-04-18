@@ -11,7 +11,7 @@ const baseConfig = createSpaConfig({
 export default merge(baseConfig, {
   input: './index.html',
   plugins: [
-    nodeResolve(),
+    nodeResolve({ mainFields: ['browser'] }),
     string({
       include: './src/contract.js',
       exclude: ['**/main.js'],

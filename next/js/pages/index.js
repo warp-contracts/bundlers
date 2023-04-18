@@ -2,8 +2,14 @@ import styles from '../styles/Home.module.css';
 import { defaultCacheOptions, WarpFactory } from 'warp-contracts';
 import { useEffect, useState } from 'react';
 import contractSrc from 'raw-loader!../../../contracts/contract.js';
-import { DeployPlugin, ArweaveSigner, InjectedEthereumSigner } from 'warp-contracts-plugin-deploy';
+import {
+  DeployPlugin,
+  ArweaveSigner,
+  InjectedEthereumSigner,
+  InjectedArweaveSigner,
+} from 'warp-contracts-plugin-deploy';
 import { providers } from 'ethers';
+import { ArweaveWebWallet } from 'arweave-wallet-connector';
 
 const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
 const WASM_SOURCE_TX_ID = 'I3fXL99CwJTrYYaqbmG2qxY3WU9wfC7drwIP7Px5p_o';
@@ -76,6 +82,34 @@ const deployMetamaskContract = async (e) => {
   console.log(contractTxId);
 };
 
+const deployArweaveContract = async (e) => {
+  const initialState = {
+    ticker: 'WB',
+    name: 'WB',
+    balances: {},
+  };
+  if (window.arweaveWallet) {
+    await window.arweaveWallet.connect(['ACCESS_ADDRESS', 'SIGN_TRANSACTION', 'ACCESS_PUBLIC_KEY', 'SIGNATURE']);
+  }
+  const userSigner = new InjectedArweaveSigner(window.arweaveWallet);
+  await userSigner.setPublicKey();
+  // const wallet = new ArweaveWebWallet({
+  //   name: 'Your application name',
+  //   logo: 'URL of your logo to be displayed to users',
+  // });
+
+  // wallet.setUrl('arweave.app');
+  // await wallet.connect();
+  // const userSigner = new InjectedArweaveSigner(wallet);
+  // await userSigner.setPublicKey();
+  const { contractTxId } = await warp.deploy({
+    wallet: userSigner,
+    initState: JSON.stringify(initialState),
+    src: contractSrc,
+  });
+  console.log(contractTxId);
+};
+
 export default function Home() {
   const [srcContractState, setSrcContractState] = useState();
   const [wasmSrcContractState, setWasmSrcContractState] = useState();
@@ -100,6 +134,7 @@ export default function Home() {
       <div id='srcState'>{JSON.stringify(srcContractState)}</div>
       <button onClick={writeMetamaskInteraction}>Sign interaction Metamask</button>
       <button onClick={deployMetamaskContract}>Deploy Metamask contract</button>
+      <button onClick={deployArweaveContract}>Deploy Arweave contract</button>
     </div>
   );
 }
