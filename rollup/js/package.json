@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "rollup-plugin-string": "^3.0.0",
-    "warp-contracts": "1.4.2",
+    "warp-contracts": "1.4.13",
     "warp-contracts-plugin-deploy": "1.0.3"
   }
 }
