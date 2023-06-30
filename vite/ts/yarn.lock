@@ -4741,10 +4741,10 @@ warp-contracts-plugin-deploy@1.0.3:
     arlocal "^1.1.59"
     node-stdlib-browser "^1.2.0"
 
-warp-contracts@1.4.13:
-  version "1.4.13"
-  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.4.13.tgz#99135d0334c02ce50d25cce27c505f83be919cff"
-  integrity sha512-lDT7BYgcQMdBBDFT/WnroxU/fY8DhSO0pcPUHALpdAeopHoJdEdvIrJcI+OLgFlIirAk7Otu4B+EfOmgUsE3tQ==
+warp-contracts@1.4.14-beta.0:
+  version "1.4.14-beta.0"
+  resolved "https://registry.yarnpkg.com/warp-contracts/-/warp-contracts-1.4.14-beta.0.tgz#10c20fe59c9ae8b2fe607164e16941ab9dbf5c27"
+  integrity sha512-w7MLrN/wfL0eKhcy67DZWOZ4n8GE+ohF1pB6RJOC3asi7KJJW5YGTnZ7e9/jdO83QfzOxzUUX1H4uNqybxB79w==
   dependencies:
     archiver "^5.3.0"
     arweave "1.13.7"

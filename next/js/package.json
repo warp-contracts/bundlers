@@ -10,14 +10,14 @@
   },
   "dependencies": {
     "arweave-wallet-connector": "^1.0.2",
-    "ethers": "^6.0.8",
+    "ethers": "5.7.2",
     "next": "12.2.5",
     "raw-loader": "^4.0.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "warp-contracts": "1.4.13",
+    "warp-contracts": "1.4.14-beta.0",
     "warp-contracts-plugin-deploy": "1.0.3",
-    "warp-contracts-plugin-signature": "1.0.12",
+    "warp-contracts-plugin-signature": "^1.0.14",
     "warp-signature": "1.0.5"
   },
   "devDependencies": {

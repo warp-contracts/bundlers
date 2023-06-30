@@ -2,14 +2,9 @@ import styles from '../styles/Home.module.css';
 import { defaultCacheOptions, WarpFactory } from 'warp-contracts';
 import { useEffect, useState } from 'react';
 import contractSrc from 'raw-loader!../../../contracts/contract.js';
-import {
-  DeployPlugin,
-  ArweaveSigner,
-  InjectedEthereumSigner,
-  InjectedArweaveSigner,
-} from 'warp-contracts-plugin-deploy';
-import { providers } from 'ethers';
+import { DeployPlugin, ArweaveSigner } from 'warp-contracts-plugin-deploy';
 import { ArweaveWebWallet } from 'arweave-wallet-connector';
+import { providers } from 'ethers';
 
 const SOURCE_TX_ID = '9vYCJs70vyrjgXudb6lhHijXelcOd4MV5DsACgmAdoU';
 const WASM_SOURCE_TX_ID = 'I3fXL99CwJTrYYaqbmG2qxY3WU9wfC7drwIP7Px5p_o';
@@ -55,10 +50,12 @@ const loadWallet = async () => {
 };
 
 const writeMetamaskInteraction = async (e) => {
-  const evmSignature = (await import('warp-contracts-plugin-signature')).evmSignature;
-  const contract = warp
-    .contract('48G_IllU9G-PRyl4Ods88STtQ1h0Eo8zHQUHdNlHKZw')
-    .connect({ signer: evmSignature, signatureType: 'ethereum' });
+  await window.ethereum.enable();
+  const wallet = new providers.Web3Provider(window.ethereum);
+  const InjectedEthereumSigner = (await import('warp-contracts-plugin-signature')).InjectedEthereumSigner;
+  const userSigner = new InjectedEthereumSigner(wallet);
+  await userSigner.setPublicKey();
+  const contract = warp.contract('48G_IllU9G-PRyl4Ods88STtQ1h0Eo8zHQUHdNlHKZw').connect(userSigner);
   contract.writeInteraction({ function: 'postMessage', content: 'lol2' });
 };
 
@@ -69,13 +66,13 @@ const deployMetamaskContract = async (e) => {
     balances: {},
   };
   await window.ethereum.enable();
-
-  const wallet = new providers.BrowserProvider(window.ethereum);
-
+  const wallet = new providers.Web3Provider(window.ethereum);
+  const InjectedEthereumSigner = (await import('warp-contracts-plugin-signature')).InjectedEthereumSigner;
   const userSigner = new InjectedEthereumSigner(wallet);
   await userSigner.setPublicKey();
+
   const { contractTxId } = await warp.createContract.deploy({
-    wallet: new InjectedEthereumSigner(wallet),
+    wallet: userSigner,
     initState: JSON.stringify(initialState),
     src: contractSrc,
   });
@@ -91,6 +88,8 @@ const deployArweaveContract = async (e) => {
   if (window.arweaveWallet) {
     await window.arweaveWallet.connect(['ACCESS_ADDRESS', 'SIGN_TRANSACTION', 'ACCESS_PUBLIC_KEY', 'SIGNATURE']);
   }
+  const InjectedArweaveSigner = (await import('warp-contracts-plugin-signature')).InjectedArweaveSigner;
+  console.log(window.arweaveWallet);
   const userSigner = new InjectedArweaveSigner(window.arweaveWallet);
   await userSigner.setPublicKey();
   // const wallet = new ArweaveWebWallet({
